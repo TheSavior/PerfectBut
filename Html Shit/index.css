@@ -1,0 +1,9 @@
+#container	{
+	margin-left: 30%;
+}
+
+.singlepost	{
+		border: 3px solid black;
+		width:600px;
+		height:100px;
+}
