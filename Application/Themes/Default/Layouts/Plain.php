@@ -1,7 +1,3 @@
-<?php
-    $this->registerHelper("fb", "Application\Themes\Helpers\Facebook");
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
