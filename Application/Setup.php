@@ -31,7 +31,7 @@ class Setup
 	static function doSetup($registry)
 	{
 		// Set up our config values
-		$registry->config->siteUrl = "http://localhost/PerfectBut/";
+		$registry->config->siteUrl = $_SERVER["ROOT"];
 		$registry->config->rewriting = true;
                         
 		// Set the default theme
