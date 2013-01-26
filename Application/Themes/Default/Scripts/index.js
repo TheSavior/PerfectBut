@@ -1,16 +1,41 @@
+var url = "http://localhost/PerfectBut/Api/Posts/getAll";
+
+
+
 $(document).ready(function()    {
-    $(document).scroll(function(){
-        if (($(document).height() - $(window).height() - $(document).scrollTop()) < 100) {
-           loadPosts();
-        }
-    });
+        $('upvote, downvote').click(updateVoteCount);
+
+        loadPosts();
 });
 
 
+function printPosts (data)  {
+     alert(data);
+     $.each(data, function(i){
+           
+            var resource = data.response[i];
+            var $newPost = $('<div>').addClass('singlepost').appendTo('TheWall')
+            $('<a>').addClass('posttext').text(resource.text).appendTo($newPost);
+            $('<p>').addClass('upvote').text(resource.upvotes).appendTo($newPost);
+            $('<p>').addClass('downvote').text(resource.downvotes).appendTo($newPost);
+            $('<p>').addClass('author').text(resource.username).appendTo($newPost);
+            $('<p>').addClass('time').text(resource.timestamp).appendTo($newPost);
+ 
+        });
+}
+
 function loadPosts()    {
-    for(var i = 0 ; i < 10 ; i++)    {
-            var $newPost = $('<div>').addClass('singlepost');
-            $('<a>').addClass('posttext').text("This dude has a small dick nah mean son, it was very very very small    This dude has a small dick nah mean son, it was very very very small This dude has a small dick nah mean son, it was very very very small This dude has a small dick nah mean son, it was very very very small").appendTo($newPost);
-            $newPost.appendTo('TheWall');
-    }    
+    $.ajax({
+            url: url ,
+            dataType: 'jsonp' ,
+            success: printPosts 
+    });
+}
+
+function updateVoteCount()  {
+     $.ajax({
+            url: url ,
+            dataType: 'jsonp' ,
+            success: printVoteCount 
+    });   
 }
