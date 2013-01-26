@@ -27,7 +27,7 @@ class Posts extends \Saros\Application\Controller
           \Application\Classes\ErrorCode::show(400);  
     }
                                                     
-    public function getAll() {
+    public function getAllAction() {
         $this->view->show(false);
         
         $items = array();
