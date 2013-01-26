@@ -1,3 +1,9 @@
+SetEnv DBNAME perfectbut
+SetEnv DBUSER root
+SetEnv DBPASS 
+SetEnv HOSTNAME localhost
+
+
 Options +FollowSymlinks
 RewriteEngine on
 

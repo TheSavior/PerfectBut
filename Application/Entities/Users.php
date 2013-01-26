@@ -8,9 +8,8 @@ class Users extends \Spot\Entity
     public static function fields()
     {
         return array(
-            'id' => array('type' => 'int', 'primary' => true, 'serial' => true),
-            'username' => array('type' => 'string'),
-            'password' => array('type' => 'string'),
+            'id' => array('type' => 'string', 'primary' => true),
+            'username' => array('type' => 'string'),   
         );
     }
     
