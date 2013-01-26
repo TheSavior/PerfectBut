@@ -43,7 +43,7 @@ class Utils
         return $string;
     }
     
-    function generateSalt($max = 5) {
+    public static function generateSalt($max = 5) {
         $characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
         $i = 0;
         $salt = "";
