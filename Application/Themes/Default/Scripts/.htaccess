@@ -1,1 +1,2 @@
 AddType application/x-httpd-php .php .js
+AddType application/x-httpd-php .php .css
