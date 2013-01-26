@@ -1,0 +1,12 @@
+JSON file in similar format
+
+
+--for posts--
+<response>
+	<postid>
+	<Upvotes>
+	<downVotes>
+	<post text>
+	<timestamp>
+
+--
