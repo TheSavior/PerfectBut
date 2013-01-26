@@ -2,38 +2,48 @@
     $auth = \Saros\Auth::getInstance();
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Saros Framework</title>
-	<link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->getThemeLocation()?>/Images/favicon.ico" />
-	<?php echo $this->headStyles()->addStyle("Main") ?>
-	<?php echo $this->headScripts() ?>
-</head>
-<body>
-	<div id="container">
-		<div id="main">
-                <ul>
-                    <?php
-                        $link = "";
-                        if ($auth->hasIdentity()) {
-                            $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Index", "logout").'">Logout</a>';
-                        }
-                        else
-                        {
-                            $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Register", "index").'">Login</a>';
-                        }
-                    ?>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Perfect Guy But...</title>
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->getThemeLocation()?>/Images/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css"/>           
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+        <?php echo $this->headStyles()->addStyle("Main") ?>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+        <?php echo $this->headScripts()->addScript("index") ?>
+    </head>
+    <body>
+        <div id="container">
+            <div id = "Header">
+                <h1>Perfect Guy But...</h1>
+            </div>    
+
+            <div id = "Banner">
+                <p><input type="text" id="query" autofocus="autofocus"><button id="querySubmit">Post</button></p>
+            </div>    
+
+            <ul>
+                <?php
+                    $link = "";
+                    if ($auth->hasIdentity()) {
+                        $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Index", "logout").'">Logout</a>';
+                    }
+                    else
+                    {
+                        $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Register", "index").'">Login</a>';
+                    }
+                ?>
                 <li id="login"><?php echo $link?></li>
-                </ul>
-			<?php
-            echo $this->content() 
+            </ul>
+            <?php
+                echo $this->content() 
             ?>
-		</div>
-		<div id="footer">
+        </div>
+        <div id="footer">
             <?php echo \Spot\Log::queryCount() ?> Queries
-		</div>
-	</div>
-</body>
+        </div>
+    </body>
 </html>

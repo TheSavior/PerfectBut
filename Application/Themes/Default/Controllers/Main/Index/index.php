@@ -1,14 +1,18 @@
-<div class="titlebar">Welcome</div>
-<div>
+<div id ="TheWall">
+    <h2><a href="thewall.html">The Wall</a></h2>
 
-<?php
+    <?php
 
-    foreach ($this->Posts as $post) {
-          echo '<p>
-                He\'s perfect but '.$post->text.' by '.$post->poster->username.'<br />
-                <span style="color: green">'.$post->upvote.'<span> - <span style="color: red">'.$post->downvote.'</span><br />
-                </p>';
-    }                                    
-?>
-You are using Saros Framework V<?php echo $this->Version ?>
+        foreach ($this->Posts as $post) {
+        ?>
+        <div class ="singlepost">
+            <span class="posttext">He's perfect but <?php echo $post->text?></span>
+            <a class="author"><?php echo $post->poster->username ?></a>
+            <a class="upvote"><?php echo $post->upvote?></a>
+            <a class="downvote"><?php echo $post->downvote?></a>
+        </div>
+        <?php
+        }                                    
+    ?>
+    </div>
 </div>
