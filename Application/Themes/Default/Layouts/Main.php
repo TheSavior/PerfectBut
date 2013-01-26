@@ -1,6 +1,5 @@
 <?php
     $auth = \Saros\Auth::getInstance();
-    $identity = $auth->getIdentity();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -16,15 +15,14 @@
 	<div id="container">
 		<div id="main">
                 <ul>
+                    <?php
+                        $link = "";
+                        if ($auth->hasIdentity()) {
+                            $link = $GLOBALS["registry"]->utils->makeLink("Register", "logout");
+                        }
+                    ?>
                 <li id="login"></li>
                 </ul>
-                     <p>
-                <span id="usertext_left">
-                        <span id="greeting">Welcome,</span>
-                           
-                            <span id="username"><?php echo $identity->username; ?></span>
-                    </span>
-                    </p>
 			<?php
             echo $this->content() 
             ?>

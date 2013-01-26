@@ -18,6 +18,13 @@ class Users extends \Spot\Entity
     public static function relations()
     {
         return array(
+            // Each post entity 'hasMany' comment entites
+            'posts' => array(
+                'type' => 'HasMany',
+                'entity' => '\Application\Entities\Posts',
+                'where' => array('userId' => ':entity.id'),
+                'order' => array('date_created' => 'ASC')
+            )
         );
     }
 }
