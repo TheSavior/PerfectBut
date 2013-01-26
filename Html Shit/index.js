@@ -19,7 +19,7 @@ function printPosts (data)	{
 }
 
 function loadPosts()	{
-  	var url = "http://localhost/PerfectBut/Api/getPosts";
+  	var url = "http://localhost/PerfectBut/Api/Posts/getAll";
  	$.ajax({
             url: url ,
             dataType: 'jsonp' ,
