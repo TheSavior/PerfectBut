@@ -16,12 +16,31 @@ class Install extends \Saros\Application\Controller
         $this->registry->mapper->insert($user); 
         
         $posts = array();
-        $posts[] = array("userId" => 1, "text", "text" => "Post number 1", "date_created" => time()-30, "upvote"=>4, "downvote" => 13);
-        $posts[] = array("userId" => 1, "text", "text" => "Post number 2", "date_created" => time()-12, "upvote"=>6, "downvote" => 2);
-        $posts[] = array("userId" => 1, "text", "text" => "Post number 3", "date_created" => time()-4, "upvote"=>2, "downvote" => 1);
         
-        foreach($posts as $post) {
-             $this->registry->mapper->insert('\Application\Entities\Posts', $post);
+        $texts = array(
+            "he has a peg leg",
+            "he thinks he's a pirate",
+            "he has no eyebrows",
+            "he is 3 inches shorter than you",
+            "he has a higher voice than you",
+            "he showers himself cologne",
+            "he always talks in a baby voice",
+            "he only whispers",
+            "he has whatever hair style you have",
+            "hes cross-eyed",
+            "he wears body glitter and actually thinks it makes him look good",
+            "he farts every time you make out",
+            "his arms dont bend. He has stick arms",
+            "he likes wearing high heels in private",
+            "he is 2 years younger than you",
+            "he looks like your mom",
+            "he is 10 years older than you",
+            "he is the same age as your dad",
+        );
+        
+        foreach($texts as $text) {
+            $post = array("userId" => 1, "text" => $text, "date_created" => time()-rand(0,60), "upvote"=>rand(0,3000), "downvote" => rand(0,1000));
+            $this->registry->mapper->insert('\Application\Entities\Posts', $post);
         }
     }
     
