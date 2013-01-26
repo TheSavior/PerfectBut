@@ -33,25 +33,26 @@ class Setup
 	 */
 	public function doSetup($registry)
 	{
-        $registry->facebook = new \Saros\Service\Facebook\Api
-        (
-            array
-            (
-                'appId' => '123534114485999',
-                'secret' => 'ded21ee9c55a4aa21ee998ccd8761fa1',
-            )
-        );
-        
         $cfg = new \Spot\Config();
         $cfg->addConnection('mysql', 'mysql://'.$_SERVER["DBUSER"].':'.$_SERVER["DBPASS"].'@'.$_SERVER["HOSTNAME"].'/'.$_SERVER["DBNAME"]);
         $registry->mapper = new \Spot\Mapper($cfg);
 
         $auth = \Saros\Auth::getInstance();
 
-        $authAdapter = new \Application\Classes\Auth\Adapter\FbDb($registry->facebook, $registry->mapper);
+        $authAdapter = new \Saros\Auth\Adapter\Spot\Hash($registry->mapper, '\Application\Entities\Users', 'username', 'password', 'salt');
 
         $auth->setAdapter($authAdapter);
         
-        $auth->authenticate();
+        if (isset($_SESSION["username"]))
+        {
+            $authAdapter->setCredential($_SESSION["username"], $_SESSION["password"]);
+            $auth->authenticate();
+            
+            if (!$auth->hasIdentity())
+            {
+                unset($_SESSION["username"]);
+                unset($_SESSION["password"]);
+            }
+        }         
 	}
 }

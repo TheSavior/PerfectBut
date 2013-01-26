@@ -17,13 +17,6 @@ class Utils
         if (is_string($user)) {
             return $mapper->first($entity, array('username' => $user));
         }
-        else if(is_numeric($user)) {
-            return $mapper->first($entity, array('id' => $user));
-        }
-        else
-        {
-            throw new \InvalidArgumentException("getUser only accepts strings or numbers");
-        }
     }
     
     public static function dotdotdot($string, $length)
@@ -48,5 +41,16 @@ class Utils
         $string = str_replace("\t",str_repeat("&nbsp;",4), $string);
                 
         return $string;
+    }
+    
+    function generateSalt($max = 5) {
+        $characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
+        $i = 0;
+        $salt = "";
+        while ($i < $max) {
+            $salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
+            $i++;
+        }
+        return $salt;
     }
 }

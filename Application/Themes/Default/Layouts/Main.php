@@ -1,5 +1,4 @@
 <?php
-    $this->registerHelper("fb", "Application\Themes\Helpers\Facebook");
     $auth = \Saros\Auth::getInstance();
     $identity = $auth->getIdentity();
 ?>
@@ -17,7 +16,7 @@
 	<div id="container">
 		<div id="main">
                 <ul>
-                <li id="login"><?php echo $this->fb()->getLink(); ?></li>
+                <li id="login"></li>
                 </ul>
                      <p>
                 <span id="usertext_left">
