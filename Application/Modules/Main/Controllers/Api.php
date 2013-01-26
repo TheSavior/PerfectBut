@@ -4,6 +4,14 @@ namespace Application\Modules\Main\Controllers;
 class Api extends \Saros\Application\Controller
 {
     public function init() {
+        
+    }
+    
+    /**
+    * Call this function if the api method requires users to be signed in.
+    * 
+    */
+    private function requireAuth() {
         $auth = \Saros\Auth::getInstance();
         
         if(!$auth->hasIdentity())
@@ -11,7 +19,7 @@ class Api extends \Saros\Application\Controller
             header('HTTP/1.0 401 Unauthorized');
             die();
         }
-    }        
+    }      
     
     public function indexAction()
     {       
