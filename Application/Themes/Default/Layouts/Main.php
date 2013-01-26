@@ -18,10 +18,14 @@
                     <?php
                         $link = "";
                         if ($auth->hasIdentity()) {
-                            $link = $GLOBALS["registry"]->utils->makeLink("Register", "logout");
+                            $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Index", "logout").'">Logout</a>';
+                        }
+                        else
+                        {
+                            $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Register", "index").'">Login</a>';
                         }
                     ?>
-                <li id="login"></li>
+                <li id="login"><?php echo $link?></li>
                 </ul>
 			<?php
             echo $this->content() 

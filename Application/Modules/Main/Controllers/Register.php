@@ -65,8 +65,4 @@ class Register extends \Saros\Application\Controller
             $this->redirect($GLOBALS["registry"]->utils->makeLink("Index", "index"));
         }
     }
-    
-    public function logoutAction() {
-        
-    }
 }

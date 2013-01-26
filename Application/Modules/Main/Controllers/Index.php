@@ -13,4 +13,16 @@ class Index extends \Saros\Application\Controller
         
 		$this->view->Version = \Saros\Version::getVersion();
 	}
+    
+    public function logoutAction() {
+        $this->view->show(false);
+        
+        $auth = \Saros\Auth::getInstance();
+        $auth->clearIdentity();
+        
+        unset($_SESSION["username"]);
+        unset($_SESSION["password"]);
+        
+        $this->redirect($GLOBALS["registry"]->utils->makeLink("Index", "index")); 
+    }
 }
