@@ -25,7 +25,7 @@
                 <div id = "name">
                     <p>PERFECTGUYBUT.COM<p>
                 </div>
-                <h1>He's The <br /> Perfect Guy But...</h1>
+                <h1><span>He's The</span><br /><span>Perfect Guy But...</span></h1>
                 <div id="queryp"><input type="text" id="query" autofocus="autofocus"><button id="querySubmit"></button></div>
                 <div id = "loginPopup" display="none">
                     <div id="pointer">
