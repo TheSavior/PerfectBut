@@ -37,7 +37,6 @@ $(document).ready(function()    {
 
 // Prints new posts are the become available from ajax call
 function printPosts (data)  {
-    alert(data);
     $.each(data, function(i){
         var resource = data[i];
         var $newPost = $('<div>').addClass('singlepost').appendTo('#TheWall');
@@ -105,6 +104,8 @@ function submitNewPost()    {
     );
 }
 
+
+function 
 
 
 function createPinger() {
