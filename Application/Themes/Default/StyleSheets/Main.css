@@ -1,5 +1,6 @@
 <?php
 $borderColor = "#A33360";
+$pink = "rgb(242, 0, 83)";
 ?>
 
 body,html{
@@ -8,7 +9,7 @@ body,html{
 }
 
 body {
-    background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/purty_wood.png');
+    background-color: rgb(220, 220, 220);
 }
 
 h2{
@@ -20,15 +21,30 @@ h2{
 #container    {
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
+    width: 1020px;
+    background-color: white;
+    overflow: hidden;
+    padding-right: 90px;
 }
 
 #banner{
 	background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/banner.png');
 	background-repeat: no-repeat;
-	width: 1020px;
-	height: 616px;
+    background-position: center;
+	height: 410px;
 	margin: auto;
+    background-color: rgb(242, 0, 83);
+    text-align: center;
+}
+#tail 
+{
+    background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/header_tail.png');    
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 54px;
+    width: 150px;
+    margin: auto;
+    margin-left: 60%;
 }
 
 #name{
@@ -57,12 +73,29 @@ h2{
 	font-size: 50pt;
 	text-align: center;
 	margin-top: 0px;
+    margin-bottom: 10px;
 }
 
-.singlepost  {
-    height: 100px;
-    margin-bottom: 8px;
-    background-color: white;
+.posttext
+{
+   background-color: <?php echo $pink ?>;
+   border-radius: 10px;
+   min-height: 70px;
+   color: white;
+   font-family: "Open Sans";
+   font-size: 14pt;
+   padding: 20px;  
+}
+
+.posttext #text
+{
+    font-weight: bold;
+    font-size: 24pt;
+}
+
+.singlepost  {           
+    width: 700px;
+    margin-bottom: 8px;      
 }
 
 .singlepost p{
@@ -70,7 +103,6 @@ h2{
 }
 
 #query{
-	margin-left: 260px;
 	width: 500px;
 	height: 50px;
 }
@@ -135,12 +167,14 @@ h2{
 }
 
 #querySubmit{
+    background-image:url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/post_button.png');
 	display: inline;
-  	width: 50px;
-  	height: 30px;
+  	width: 106px;
+  	height: 38px;
   	position: relative;
-  	left: -80px;
-  	top: 1.5px;  
+  	left: -120px;
+  	top: -10px;
+    border: 0;
 }
 
 #footer 
@@ -149,11 +183,11 @@ h2{
 }
 
 #TheWall{
-    float: left;
-	border: 7px solid <?php echo $borderColor ?>;
+    float: right;                                
 	border-radius: 7px;
-    width: 800px;
-	background-color: <?php echo $borderColor ?>;
+    margin-top: 20px;
+                                    
+    font-family: "Open Sans";
 }
 
 ul#nav
