@@ -12,6 +12,7 @@ var login = API_USERS + "login";
 var userAuth = API_USERS + "currentUser";
 var POST = url + "Api/Posts/post/";
 var VOTE = url + "Api/Posts/vote/";
+var REGISTER = API_USERS + "register";
 
 $(document).ready(function()    {
     $('.upvote').click(function()   {
@@ -24,6 +25,7 @@ $(document).ready(function()    {
     $('#querySubmit').click(signInAjax);
     //loadPosts();
     $('#userLogin').click(userLogin);
+    $('#registerButton').click(register);
 });
 
 
@@ -92,6 +94,15 @@ function submitNewPost(data)    {
             {text : textOfPost} 
         );
     }
+}
+
+function register() {
+    $.post(REGISTER,
+        {
+            username: $('#username').val(),
+            password: $('#password').val()
+        }
+    );
 }
 
 

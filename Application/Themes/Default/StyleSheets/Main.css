@@ -217,6 +217,7 @@ h2{
   	left: -120px;
   	top: -10px;
     border: 0;
+    cursor: pointer;
 }
 
 #footer 

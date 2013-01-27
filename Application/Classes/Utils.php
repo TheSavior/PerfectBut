@@ -74,7 +74,7 @@ class Utils
 
         if($diff < 60)
         {
-            return "Less than 1 minute ago";
+            return "just now";
         }
         else if($diff < 60 * 60) // less than an hour ago
         {

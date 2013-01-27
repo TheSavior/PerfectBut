@@ -30,7 +30,9 @@
                     </div>
                     <label><span>Nickname</span><input type="text" id="username"  name = "username" autofocus="autofocus"></label><br />
                     <label><span>Password</span><input type="password" id="password" name = "password" autofocus="autofocus"></span></label>
+                    <br>
                      <button id = "userLogin">Login</button>
+                     <button id = "registerButton">Make a new account</button>
                 </div>    
             </div>
         <div id="container">
