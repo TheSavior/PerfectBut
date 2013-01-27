@@ -89,7 +89,7 @@ function submitNewPost(data)    {
         
         $.post(POST,
             {text : textOfPost} 
-        )
+        );
     }
 }
 
@@ -99,23 +99,37 @@ function signInAjax()   {
     $.ajax({
         "url": userAuth,
         success: submitNewPost ,
-        error: showLogin
-    })
-}
+        statusCode : {
+            401: function() {
+                $('#loginPopup').show(); 
+            }
+        }
+    });
 
-// If user is not logged in, show the login prompt
-function showLogin()    {
-    $('#loginPopup').show();
 }
 
 // checks to see if login is valid
 function userLogin()    {
     var $userName = $('#username').val();
     var $userPass = $('#password').val();
-    $.post(login ,
-        {username : $userName , password : $userPass} , 
-    
+    $.ajax({
+        "url" : login ,
+        data : {username : $userName , password : $userPass} , 
+        type: POST ,
+        statusCode : {
+            200 : function() { 
+                $('#loginPopup').hide(); 
+            } ,
 
-    function() { $('#loginPopup').hide(); })
+            400 :  function() { 
+                alert('Please fill out both uername and password');
+            } ,
+
+            401 : function() { 
+                alert('Please try again'); 
+            }
+        }
+    });
+        
 }
 
