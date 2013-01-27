@@ -1,10 +1,11 @@
 <?php
 header("Content-type: application/x-javascript");
+
 ?>
 
 "use strict";
 
-var url = "http://localhost/PerfectBut/";
+var url = <?php echo $_SERVER["ROOT"]?>
 
 
 

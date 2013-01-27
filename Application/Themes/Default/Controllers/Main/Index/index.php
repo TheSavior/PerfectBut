@@ -1,4 +1,4 @@
-<h2>The Wall</h2>
+<!--<h2>The Wall</h2>
 
 <ul id="nav">
     <li>Most Recent</li>
@@ -7,12 +7,16 @@
     <li>My Posts</li>
     <li>Favorites</li>
 </ul>
+-->
 <div id ="TheWall">
     <?php
         foreach ($this->Posts as $post) {
         ?>
         <div class ="singlepost">
-            <span class="posttext">He's perfect but <?php echo $post->text?></span>
+            <div class="posttext">
+                <span id="intro">He's the perfect guy but...</span><br />
+                <span id="text"><?php echo $post->text?></span>
+            </div>
             <span class="author"><?php echo $post->poster->username ?></span>
             <span class="upvote" id="<?php echo $post->id?>_up"><?php echo $post->upvote?></span>
             <span class="downvote" id="<?php echo $post->id?>_down"><?php echo $post->downvote?></span>

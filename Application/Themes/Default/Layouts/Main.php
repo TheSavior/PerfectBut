@@ -15,34 +15,34 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Knewave' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" href="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/favicon.ico" type="image/x-icon" />
         <?php echo $this->headScripts()->addScript("index") ?>
     </head>
     <body>
-        <div id="banner">
+        
+            <div id="banner">
                 <div id = "name">
                     <p>PERFECTGUYBUT.COM<p>
                 </div>
                 <h1>He's The <br /> Perfect Guy But...</h1>
-                 <p id="queryp"><input type="text" id="query" autofocus="autofocus"><button id="querySubmit">Post</button></p>
-                 <div id = "loginPopup" display="none">
-                <div id="pointer">
-                  <!-- pointer for the login popup -->
-                </div>
-                <label><span>Nickname</span><input type="text" id="username"  name = "username" autofocus="autofocus"></label><br />
-                <label><span>Password</span><input type="password" id="password" name = "password" autofocus="autofocus"></span></label>
-                <button id = "userLogin">Login</button> 
+                <div id="queryp"><input type="text" id="query" autofocus="autofocus"><button id="querySubmit"></button></div>
+                <div id = "loginPopup" display="none">
+                    <div id="pointer">
+                        <!-- pointer for the login popup -->
+                    </div>
+                    <label><span>Nickname</span><input type="text" id="username"  name = "username" autofocus="autofocus"></label><br />
+                    <label><span>Password</span><input type="password" id="password" name = "password" autofocus="autofocus"></span></label>
+                     <button id = "userLogin">Login</button>
                 </div>    
-            </div>  
-        <div id="container">  
-            
+            </div>
+        <div id="container">
+            <div id="tail">
+            </div> 
 
             <?php
                 echo $this->content() 
             ?>
         </div>
-        <div id="footer">
-            <?php echo \Spot\Log::queryCount() ?> Queries
-        </div>
-    </body>
+    </body>              
 </html>
