@@ -33,19 +33,6 @@
                 <label><span>Password</span><input type="password" id="password" autofocus="autofocus"></span></label>
             </div>    
 
-            <ul>
-                <?php
-                    $link = "";
-                    if ($auth->hasIdentity()) {
-                        $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Index", "logout").'">Logout</a>';
-                    }
-                    else
-                    {
-                        $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Register", "index").'">Login</a>';
-                    }
-                ?>
-                <li id="login"><?php echo $link?></li>
-            </ul>
             <?php
                 echo $this->content() 
             ?>
