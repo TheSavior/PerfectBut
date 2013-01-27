@@ -11,6 +11,7 @@ var login = API_USERS + "login";
 var userAuth = API_USERS + "currentUser";
 var POST = url + "Api/Posts/post/";
 var VOTE = url + "Api/Posts/vote/";
+var CREATE = API_USERS + "register";
 
 $(document).ready(function()    {
     $('.upvote').click(function()   {
@@ -24,6 +25,11 @@ $(document).ready(function()    {
     //loadPosts();
     $('#userLogin').click(userLogin);
 });
+
+// Make a new fucking account, what do you think?
+function makeNewAccount() {
+    
+} 
 
 
 // Prints new posts are the become available from ajax call
