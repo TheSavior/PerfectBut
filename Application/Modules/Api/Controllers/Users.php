@@ -20,7 +20,8 @@ class Users extends \Saros\Application\Controller
 
         if(!$auth->hasIdentity())
         {   
-            \Application\Classes\ErrorCode::show(403);  
+            echo "null";
+            //\Application\Classes\ErrorCode::show(403);  
         }
     }      
 
