@@ -22,10 +22,13 @@ $(document).ready(function()    {
     $('.downvote').click(function() {
         updateVoteCount("down" , $(this))
     });
-    $('#querySubmit').click(signInAjax);
+    $('#querySubmit').click(submitNewPost);
     //loadPosts();
-    $('#userLogin').click(userLogin);
-    $('#registerButton').click(register);
+    $('#query').keydown(function(event) {
+      if (event.keyCode == 13){
+        submitNewPost();
+      }
+    });
 });
 
 
@@ -68,77 +71,29 @@ function updateVoteCount(voteType , theCounter)  {
 }
 
 // Prints new post if user is logged in depends on signInAjax
-function submitNewPost(data)    {
-    console.log(data.responseText);
-    if(data.responseText != "null")    {
-        var textOfPost = $('#query').val();
-        var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
-        var $posttext = $('<div>').addClass('posttext').appendTo($newPost);
-        $('<span>').addClass('intro').text('he\'s the perfect guy but...').appendTo($posttext);
-        $('<br>').appendTo($posttext);
-        $('<span>').addClass('text').text(textOfPost).appendTo($posttext);
-        var $underpost = $('<div>').addClass('underpost').appendTo($newPost);
-        $('<span>').addClass('author').text(data).appendTo($underpost);
-        $('<span>').text(' submitted ').appendTo($underpost);
-        $('<span>').addClass('time').text('Just Now').appendTo($underpost);
-        $('<span>').addClass('location').text(' in Seattle').appendTo($underpost);
-        var $ratings = $('<div>').addClass('ratings').appendTo($underpost);
-        var $voteOption = $('<span>').addClass('voteOption upvote').appendTo($ratings);
-        $('<span>').addClass('upvote').text('0').appendTo($voteOption);
-        $('<img>').attr('src' , 'http://localhost/PerfectBut/Application/Themes/Default/Images/heart.png').appendTo($voteOption);
-        var $voteOption2 = $('<span>').addClass('voteOption downvote').appendTo($ratings);
-        $('<span>').addClass('downvote').text('0').appendTo($voteOption2);
-        $('<img>').attr('src' , 'http://localhost/PerfectBut/Application/Themes/Default/Images/heart_broken.png').appendTo($voteOption2);
+function submitNewPost()    {
+    var textOfPost = $('#query').val();
+    var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
+    $newPost.hide();
+    var $posttext = $('<div>').addClass('posttext').appendTo($newPost);
+    $('<span>').addClass('intro').text('He\'s the perfect guy but...').appendTo($posttext);
+    $('<br>').appendTo($posttext);
+    $('<span>').addClass('text').text(textOfPost).appendTo($posttext);
+    var $underpost = $('<div>').addClass('underpost').appendTo($newPost);
+    $('<span>').text('Submitted ').appendTo($underpost);
+    $('<span>').addClass('time').text('Just Now').appendTo($underpost);
+    $('<span>').addClass('location').text(' in Seattle').appendTo($underpost);
+    var $ratings = $('<div>').addClass('ratings').appendTo($underpost);
+    var $voteOption = $('<span>').addClass('voteOption upvote').appendTo($ratings);
+    $('<span>').addClass('upvote').text('0').appendTo($voteOption);
+    $('<img>').attr('src' , 'http://localhost/PerfectBut/Application/Themes/Default/Images/heart.png').appendTo($voteOption);
+    var $voteOption2 = $('<span>').addClass('voteOption downvote').appendTo($ratings);
+    $('<span>').addClass('downvote').text('0').appendTo($voteOption2);
+    $('<img>').attr('src' , 'http://localhost/PerfectBut/Application/Themes/Default/Images/heart_broken.png').appendTo($voteOption2);
+    $newPost.fadeIn(500);
+    $('#query').val('');
 
-        $.post(POST,
-            {text : textOfPost} 
-        );
-    }else{
-        $('#loginPopup').show();
-    }
-}
-
-function register() {
-    $.post(REGISTER,
-        {
-            username: $('#username').val(),
-            password: $('#password').val()
-        }
+    $.post(POST,
+        {text : textOfPost} 
     );
 }
-
-
-// Checks to see if user is logged in
-function signInAjax()   {
-    $.ajax({
-        "url": userAuth,
-        complete : submitNewPost
-    });
-
-}
-
-// checks to see if login is valid
-function userLogin()    {
-    var $userName = $('#username').val();
-    var $userPass = $('#password').val();
-    $.ajax({
-        "url" : login ,
-        data : {username : $userName , password : $userPass} , 
-        type: POST ,
-        statusCode : {
-            200 : function() { 
-                $('#loginPopup').hide(); 
-            } ,
-
-            400 :  function() { 
-                alert('Please fill out both uername and password');
-            } ,
-
-            401 : function() { 
-                alert('Please try again'); 
-            }
-        }
-    });
-        
-}
-
