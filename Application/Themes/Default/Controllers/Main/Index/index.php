@@ -11,6 +11,10 @@
 <div id ="TheWall">
     <?php
         foreach ($this->Posts as $post) {
+            $city = "Unknown";
+            
+            if ($post->city)
+                $city = $post->city;
         ?>
         <div class ="singlepost">
             <div class="posttext">
@@ -21,7 +25,7 @@
                 <span class="author"><?php echo $post->poster->username ?></span> submitted
                 <span class="time post_<?php echo $post->date_created?>"><?php echo \Application\Classes\Utils::formatDate($post->date_created); ?></span>
                 in
-                <span class="location"><?php echo $post->city?></span>
+                <span class="location"><?php echo $city?></span>
                 
                 <div class="ratings">
                     <span class="voteOption upvote">
