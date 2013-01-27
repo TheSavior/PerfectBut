@@ -20,7 +20,7 @@ class Users extends \Saros\Application\Controller
 
         if(!$auth->hasIdentity())
         {   
-            \Application\Classes\ErrorCode::show(401);  
+            \Application\Classes\ErrorCode::show(403);  
         }
     }      
 
@@ -48,7 +48,7 @@ class Users extends \Saros\Application\Controller
         
         if (!$auth->hasIdentity())
         {
-            \Application\Classes\ErrorCode::show(401);
+            \Application\Classes\ErrorCode::show(403);
         }
         else
         {
