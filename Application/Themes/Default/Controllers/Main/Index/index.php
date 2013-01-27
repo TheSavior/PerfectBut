@@ -19,7 +19,7 @@
             </div>
             <div class="underpost">
                 <span class="author"><?php echo $post->poster->username ?></span> submitted
-                <span class="time">3 hours ago</span>
+                <span class="time"><?php echo \Application\Classes\Utils::formatDate($post->date_created); ?></span>
                 in
                 <span class="location">Seattle</span>
                 
