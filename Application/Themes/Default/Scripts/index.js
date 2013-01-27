@@ -7,6 +7,7 @@ header("Content-type: application/x-javascript");
 "use strict";
 
 var url = "<?php echo $_SERVER["ROOT"]?>";
+var VIEWPOST = "<?php echo $GLOBALS["registry"]->utils->makeLink("Index", "viewPost")?>";
 var API_USERS = url + "Api/Users/"
 var login = API_USERS + "login";
 var userAuth = API_USERS + "currentUser";

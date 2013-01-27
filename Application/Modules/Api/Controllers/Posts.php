@@ -84,8 +84,8 @@ class Posts extends \Saros\Application\Controller
         $post = $this->registry->mapper->get('\Application\Entities\Posts');
         $post->text = htmlspecialchars($postText);
 
-        $auth = \Saros\Auth::getInstance();
-        $post->userId = $auth->getIdentity()->getIdentifier();
+        //$auth = \Saros\Auth::getInstance();
+        //$post->userId = $auth->getIdentity()->getIdentifier();
         $post->date_created = time();
         
         if ($location)
