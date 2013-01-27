@@ -58,7 +58,7 @@ class Users extends \Saros\Application\Controller
     }
     
     public function registerAction() {
-        if($_SERVER['REQUEST_METHOD'] == "POST") 
+        if($_SERVER['REQUEST_METHOD'] != "POST") 
         {
             echo "Must be post";
             \Application\Classes\ErrorCode::show(400);

@@ -7,7 +7,7 @@ class Posts extends \Saros\Application\Controller
 
     public function init() {
         $this->mapper = $GLOBALS["registry"]->mapper;
-        
+        header('Access-Control-Allow-Origin: *');
         header("Content-Type: application/json", true);
     }
 

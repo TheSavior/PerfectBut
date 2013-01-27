@@ -4,6 +4,7 @@ namespace Application\Modules\Main\Controllers;
 class Index extends \Saros\Application\Controller
 {
     public function init() {
+        header('Access-Control-Allow-Origin: *');
     }
     
 	public function indexAction()
