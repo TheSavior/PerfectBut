@@ -1,3 +1,7 @@
+<?php
+$borderColor = "#A33360";
+?>
+
 body,html{
 	margin: 0;
 	padding: 0;
@@ -16,7 +20,7 @@ h2{
 #container    {
     margin-left: auto;
     margin-right: auto;
-    width: 800px;
+    width: 1000px;
 }
 
 #banner{
@@ -87,10 +91,11 @@ h2{
 }
 
 #loginPopup{
+    display: none;
 	float: right;
 	width: 300px;
 	height: 100px;
-	border: solid black 7px;
+	border: 7px solid <?php echo $borderColor ?>;
 	border-radius: 10px;
 	background-color: white;
 }
@@ -114,7 +119,7 @@ h2{
 	position: relative;
 	width: 10px;
 	height: 10px;
-	border: solid black 7px;
+	border: 7px solid <?php echo $borderColor ?>;
 	top: -11px;
 	transform: rotate(45deg);
 	-ms-transform: rotate(45deg); /* IE 9 */
@@ -138,9 +143,44 @@ h2{
   	top: 1.5px;  
 }
 
+#footer 
+{
+    clear: both;
+}
+
 #TheWall{
-	border: solid black 7px;
-	border-radius: 7px; 
-	width: 800px;
-	background-color: black;
+    float: left;
+	border: 7px solid <?php echo $borderColor ?>;
+	border-radius: 7px;
+    width: 800px;
+	background-color: <?php echo $borderColor ?>;
+}
+
+ul#nav
+{
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style-type: none;
+    margin-top: 20px;
+    width: 150px;
+}
+
+ul#nav li
+{
+    padding: 3px;
+    display: block;
+    border: 2px solid <?php echo $borderColor ?>;
+    border-right: 0;
+    border-bottom: 2px solid <?php echo $borderColor ?>;
+    border-left: 5px solid <?php echo $borderColor ?>;
+    text-align: center;
+    margin-top: 5px;
+    background-color: white;
+}
+
+ul#nav li:hover
+{
+    background-color: #FAE1EB;
+    border-left: 8px solid <?php echo $borderColor ?>;
 }

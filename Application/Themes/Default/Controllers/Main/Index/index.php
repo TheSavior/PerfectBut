@@ -1,11 +1,13 @@
 <h2>The Wall</h2>
-<div id ="TheWall">
-    <div class="tabs"></div>
-    <div class="tabs"></div>
-    <div class="tabs"></div>
-    <div class="tabs"></div>
-    <div class="tabs"></div>
 
+<ul id="nav">
+    <li>Most Recent</li>
+    <li>Top Posts</li>
+    <li>Location</li>
+    <li>My Posts</li>
+    <li>Favorites</li>
+</ul>
+<div id ="TheWall">
     <?php
         foreach ($this->Posts as $post) {
         ?>
