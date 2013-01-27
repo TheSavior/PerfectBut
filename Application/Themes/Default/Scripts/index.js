@@ -6,8 +6,11 @@ header("Content-type: application/x-javascript");
 "use strict";
 
 var url = "<?php echo $_SERVER["ROOT"]?>";
-
-
+var API_USERS = url + "Api/Users/"
+var login = API_USERS + "login";
+var userAuth = API_USERS + "currentUser";
+var POST = url + "Api/Posts/post/";
+var VOTE = url + "Api/Posts/vote/";
 
 $(document).ready(function()    {
     $('.upvote').click(function()   {
@@ -50,13 +53,13 @@ function loadPosts()    {
 
 // Increments vote counter and sends increment to server
 function updateVoteCount(voteType , theCounter)  {
-    var url2 = "http://localhost/PerfectBut/Api/Posts/vote/";
+    
     url2 += parseInt(theCounter.attr('id')) + "/" + voteType;
     var voteNum = parseInt(theCounter.text()) + 1;
     console.log(url2);
     theCounter.text(voteNum);
     $.ajax({
-            "url": url2 ,
+            "url": VOTE ,
             dataType: 'json' 
     });  
 }
@@ -70,9 +73,9 @@ function submitNewPost(data)    {
         $('<span>').addClass('author').text(data).appendTo($newPost);
         $('<span>').addClass('upvote').text("0").appendTo($newPost);
         $('<span>').addClass('downvote').text("0").appendTo($newPost);
-        $('<p>').addClass('time').text("").appendTo($newPost);
-        $.post("http://localhost/PerfectBut/Api/Posts/post/",
-        {text : textOfPost} 
+        $('<p>').addClass('time').text("Just Now").appendTo($newPost);
+        $.post(POST,
+            {text : textOfPost} 
         )
     }
 }
@@ -81,7 +84,7 @@ function submitNewPost(data)    {
 // Checks to see if user is logged in
 function signInAjax()   {
     $.ajax({
-        "url": "http://localhost/PerfectBut/Api/Users/currentUser",
+        "url": userAuth,
         success: submitNewPost ,
         error: showLogin
     })
@@ -95,8 +98,8 @@ function showLogin()    {
 function userLogin()    {
     var $userName = $('#username').val();
     var $userPass = $('#password').val();
-    $.post("http://localhost/PerfectBut/Api/Users/login" ,
-    {username : $userName , password : $userPass} ,
+    $.post(login ,
+        {username : $userName , password : $userPass} ,
     function() { $('#loginPopup').hide();
     })
 }
