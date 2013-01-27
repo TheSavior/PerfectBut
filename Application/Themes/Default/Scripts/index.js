@@ -16,6 +16,7 @@ $(document).ready(function()    {
     $('.downvote').click(function() {
         updateVoteCount("down" , $(this))
 });
+    $('querysubmit').click(submitNewPost);
     //loadPosts();
 });
 
@@ -54,5 +55,8 @@ function updateVoteCount(voteType , theCounter)  {
             "url": url2 ,
             dataType: 'json' 
     });  
+}
 
+function submitNewPost()    {
+        
 }
