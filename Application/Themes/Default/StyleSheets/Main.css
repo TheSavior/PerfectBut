@@ -9,6 +9,8 @@ body {
 
 h2{
 	text-align: center;
+	margin-top: 0px;
+	font-size: 30pt;
 }
 
 #container    {
@@ -40,10 +42,9 @@ h2{
 }
 
 #banner h1{
-	font-family: Kavoon;
-	color: orange;
+	font-family: Knewave;
+	color: white;
 	font-size: 50pt;
-	text-shadow: 5px 5px 0px #eee, 7px 7px 0px #707070;
 	text-align: center;
 }
 
@@ -61,7 +62,10 @@ h2{
 	margin-left: 260px;
 	width: 500px;
 	height: 50px;
+}
 
+#queryp{
+	margin-bottom: 0px;
 }
 
 #baby{
@@ -82,7 +86,6 @@ h2{
 	border: solid black 7px;
 	border-radius: 10px;
 	background-color: white;
-	display: none;
 }
 
 #loginPopup input{

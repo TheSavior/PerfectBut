@@ -14,6 +14,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Knewave' rel='stylesheet' type='text/css'>
         <?php echo $this->headScripts()->addScript("index") ?>
     </head>
     <body>
@@ -22,16 +23,17 @@
                     <p>PERFECTGUYBUT.COM<p>
                 </div>
                 <h1>He's The <br /> Perfect Guy But...</h1>
-                 <p><input type="text" id="query" autofocus="autofocus"><button id="querySubmit">Post</button></p>
-            </div>  
-        <div id="container">  
-            <div id = "loginPopup" display="none">
+                 <p id="queryp"><input type="text" id="query" autofocus="autofocus"><button id="querySubmit">Post</button></p>
+                 <div id = "loginPopup" display="none">
                 <div id="pointer">
                   <!-- pointer for the login popup -->
                 </div>
                 <label><span>Nickname</span><input type="text" id="username" autofocus="autofocus"></label><br />
                 <label><span>Password</span><input type="password" id="password" autofocus="autofocus"></span></label>
             </div>    
+            </div>  
+        <div id="container">  
+            
 
             <ul>
                 <?php
