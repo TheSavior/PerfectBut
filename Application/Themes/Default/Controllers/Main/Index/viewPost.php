@@ -14,16 +14,14 @@
         <?php
     }
     else
-    {
-        
-                   
+    {              
         $post = $this->Post;
         $city = "Unknown";
         
         if ($post->city)
             $city = $post->city;
         ?>
-        <div class ="singlepost">
+        <div class="singlepost" id="<?php echo $post->date_created?>">
             <div class="posttext">
                 <span class="intro">He's the perfect guy but...</span><br />
                 <span class="text"><?php echo $post->text?></span>
@@ -33,7 +31,7 @@
             </div>
             <div class="underpost">
                 Submitted
-                <span class="time post_<?php echo $post->date_created?>"><?php echo \Application\Classes\Utils::formatDate($post->date_created); ?></span>
+                <span class="time"><?php echo \Application\Classes\Utils::formatDate($post->date_created); ?></span>
                 in
                 <span class="location"><?php echo $city?></span>
                 
