@@ -11,13 +11,14 @@ var url = "http://localhost/PerfectBut/Api/Posts/getAll";
 $(document).ready(function()    {
     $('.upvote').click(function()   {
         updateVoteCount("up" , $(this))
-});
+    });
 
     $('.downvote').click(function() {
         updateVoteCount("down" , $(this))
-});
+    });
     $('#querySubmit').click(signInAjax);
     //loadPosts();
+    $('#userLogin').click(userLogin);
 });
 
 
@@ -52,7 +53,7 @@ function updateVoteCount(voteType , theCounter)  {
     url2 += parseInt(theCounter.attr('id')) + "/" + voteType;
     var voteNum = parseInt(theCounter.text()) + 1;
     console.log(url2);
-     theCounter.text(voteNum);
+    theCounter.text(voteNum);
     $.ajax({
             "url": url2 ,
             dataType: 'json' 
@@ -61,7 +62,7 @@ function updateVoteCount(voteType , theCounter)  {
 
 // Prints new post if user is logged in depends on signInAjax
 function submitNewPost(data)    {
-    if(data)    {
+    if(data != null)    {
         var textOfPost = $('#querySubmit').text;
         var $newPost = $('<div>').addClass('singlepost').prependTo('TheWall');
         $('<span>').addClass('posttext').text(textOfPost).appendTo($newPost);
@@ -91,4 +92,13 @@ function signInAjax()   {
 // If user is not logged in, show the login prompt
 function showLogin()    {
     $('#loginPopup').show();
+}
+
+function userLogin()    {
+    var $userName = $('#username').val();
+    var $userPass = $('#password').val();
+    $.post("http://localhost/PerfectBut/Api/Users/login" ,
+    {username : $userName , password : $userPass} ,
+    function() { $('#loginPopup').hide();
+    })
 }

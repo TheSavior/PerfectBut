@@ -31,7 +31,7 @@
                 </div>
                 <label><span>Nickname</span><input type="text" id="username"  name = "username" autofocus="autofocus"></label><br />
                 <label><span>Password</span><input type="password" id="password" name = "password" autofocus="autofocus"></span></label>
-                
+                <button id = "userLogin">Login</button> 
                 </div>    
             </div>  
         <div id="container">  
