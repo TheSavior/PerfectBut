@@ -36,4 +36,24 @@ class Users extends \Saros\Application\Controller
         $this->requireAuth();
         echo json_encode($auth->getIdentity()->username);
     }
+    
+    public function loginAction() {
+        if (!isset($_POST["username"]) || !isset($_POST["password"])) {
+            \Application\Classes\ErrorCode::show(400);
+        }
+        
+        $auth = \Saros\Auth::getInstance();
+        $auth->getAdapter()->setCredential($_POST["username"], $_POST["password"]);
+        $auth->authenticate();
+        
+        if (!$auth->hasIdentity())
+        {
+            \Application\Classes\ErrorCode::show(401);
+        }
+        else
+        {
+            $_SESSION["username"] = $_POST["username"];
+            $_SESSION["password"] = $_POST["password"];
+        }
+    }
 }
