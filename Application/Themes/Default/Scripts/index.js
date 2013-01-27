@@ -4,7 +4,7 @@ header("Content-type: application/x-javascript");
 
 "use strict";
 
-var url = "http://localhost/PerfectBut/Api/Posts/getAll";
+var url = "http://localhost/PerfectBut/";
 
 
 
@@ -27,7 +27,7 @@ function printPosts (data)  {
     alert(data);
     $.each(data, function(i){
         var resource = data[i];
-        var $newPost = $('<div>').addClass('singlepost').appendTo('TheWall');
+        var $newPost = $('<div>').addClass('singlepost').appendTo('#TheWall');
         $('<span>').addClass('posttext').text(resource.text).appendTo($newPost);
         $('<span>').addClass('upvote').text(resource.upvotes).appendTo($newPost);
         $('<span>').addClass('downvote').text(resource.downvotes).appendTo($newPost);
@@ -42,7 +42,7 @@ function loadPosts()    {
     $.ajax(
         {
             dataType: "json",
-            "url": url,
+            "url": url + "/Api/Posts/getAll",
             success: printPosts
     });                     
 }
@@ -63,18 +63,16 @@ function updateVoteCount(voteType , theCounter)  {
 // Prints new post if user is logged in depends on signInAjax
 function submitNewPost(data)    {
     if(data != null)    {
-        var textOfPost = $('#querySubmit').text;
-        var $newPost = $('<div>').addClass('singlepost').prependTo('TheWall');
+        var textOfPost = $('#query').val();
+        var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
         $('<span>').addClass('posttext').text(textOfPost).appendTo($newPost);
+        $('<span>').addClass('author').text(data).appendTo($newPost);
         $('<span>').addClass('upvote').text("0").appendTo($newPost);
         $('<span>').addClass('downvote').text("0").appendTo($newPost);
-        $('<span>').addClass('author').text(data).appendTo($newPost);
-        $('<p>').addClass('time').text().appendTo($newPost);
-        $.post({
-            "url": "http://localhost/PerfectBut/Api/Posts/post/",
-            dataType: 'json' ,
-            data: {'text': textOfPost} 
-        })
+        $('<p>').addClass('time').text("").appendTo($newPost);
+        $.post("http://localhost/PerfectBut/Api/Posts/post/",
+        {text : textOfPost} 
+        )
     }
 }
 
@@ -83,7 +81,6 @@ function submitNewPost(data)    {
 function signInAjax()   {
     $.ajax({
         "url": "http://localhost/PerfectBut/Api/Users/currentUser",
-        dataType: 'json' ,
         success: submitNewPost ,
         error: showLogin
     })
