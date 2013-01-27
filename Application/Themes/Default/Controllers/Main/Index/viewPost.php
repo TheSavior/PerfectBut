@@ -14,12 +14,19 @@
     }
     else
     {
+        
+                   
         $post = $this->Post;
         $city = "Unknown";
         
         if ($post->city)
             $city = $post->city;
         ?>
+        
+        <!-- Definitely definitely not where this belongs. Nifty hack -->
+        
+        <meta property="og:description" content="<?php echo $post->text?>"/>
+        
         <div class ="singlepost">
             <div class="posttext">
                 <span class="intro">He's the perfect guy but...</span><br />
