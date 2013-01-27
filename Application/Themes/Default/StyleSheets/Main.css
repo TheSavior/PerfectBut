@@ -119,8 +119,9 @@ h2{
     color: rgb(50,50,50);
 }
 
-.underpost .ratings {
-    float: right;    
+.ratings {
+    text-align: right;    
+    font-size: 10pt;
 }
 
 .ratings .voteOption {
@@ -260,6 +261,14 @@ ul#nav li:hover
 {
     background-color: #FAE1EB;
     border-left: 8px solid <?php echo $borderColor ?>;
+}
+
+.voteOption {
+    font-size: 
+}
+
+.voteOption img {
+    vertical-align: bottom;
 }
 
 .voteOption:hover   {
