@@ -29,9 +29,10 @@
                 <div id="pointer">
                   <!-- pointer for the login popup -->
                 </div>
-                <label><span>Nickname</span><input type="text" id="username" autofocus="autofocus"></label><br />
-                <label><span>Password</span><input type="password" id="password" autofocus="autofocus"></span></label>
-            </div>    
+                <label><span>Nickname</span><input type="text" id="username"  name = "username" autofocus="autofocus"></label><br />
+                <label><span>Password</span><input type="password" id="password" name = "password" autofocus="autofocus"></span></label>
+                
+                </div>    
             </div>  
         <div id="container">  
             
