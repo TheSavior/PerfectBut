@@ -13,7 +13,8 @@ class Posts extends \Spot\Entity
             'text' => array('type' => 'string'),
             'date_created' => array('type' => 'int'),
             'upvote' => array('type' => 'int', 'default' => 0),
-            'downvote' => array('type' => 'int', 'default' => 0)   
+            'downvote' => array('type' => 'int', 'default' => 0),
+            'city' => array('type' => 'string')   
         );
     }
     

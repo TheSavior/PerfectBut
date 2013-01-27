@@ -60,10 +60,12 @@ class Users extends \Saros\Application\Controller
     public function registerAction() {
         if($_SERVER['REQUEST_METHOD'] == "POST") 
         {
+            echo "Must be post";
             \Application\Classes\ErrorCode::show(400);
         }
         
         if (!isset($_POST["username"]) || !isset($_POST["password"])) {
+            echo "Must pass username and password";
             \Application\Classes\ErrorCode::show(400);
         }
         

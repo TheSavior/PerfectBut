@@ -7,8 +7,7 @@ class Posts extends \Saros\Application\Controller
 
     public function init() {
         $this->mapper = $GLOBALS["registry"]->mapper;
-
-
+        
         header("Content-Type: application/json", true);
     }
 
@@ -79,6 +78,9 @@ class Posts extends \Saros\Application\Controller
             echo "Post is of an invalid length";
             \Application\Classes\ErrorCode::show(400);
         }
+        
+        $location = $this->getCity();
+        
 
         $post = $this->registry->mapper->get('\Application\Entities\Posts');
         $post->text = htmlspecialchars($postText);
@@ -86,7 +88,36 @@ class Posts extends \Saros\Application\Controller
         $auth = \Saros\Auth::getInstance();
         $post->userId = $auth->getIdentity()->getIdentifier();
         $post->date_created = time();
+        
+        if ($location)
+        {
+            $post->city = $location;
+        }
+        
         $this->registry->mapper->insert($post);
+    }
+    
+    private function getCity() {           
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        $ip = filter_var($ip, FILTER_VALIDATE_IP);
+        if (!$ip) 
+            return false;
+        
+        $ctx=stream_context_create(array('http'=>
+            array(
+                'timeout' => 30 // 30 seconds
+            )
+        ));
+        $url = 'http://api.ipinfodb.com/v3/ip-city/?key=d63d1b6152e01ac7848aa47e42c4b5e9077c5ede5f336a33ccbb07358d5ec46b&ip='.$ip;
+        
+        $content =  file_get_contents($url,false,$ctx);
+        if (!$content) {
+            return false;
+        }
+        $parts = explode(";", $content);
+        
+        return ucwords(strtolower($parts[6]));
     }
     
     public function allAfterAction($timestamp) {
