@@ -13,6 +13,8 @@ var userAuth = API_USERS + "currentUser";
 var POST = url + "Api/Posts/post/";
 var VOTE = url + "Api/Posts/vote/";
 var REGISTER = API_USERS + "register";
+var PING = url + "Api/Posts/allAfter/"
+var TAGLINE = "He's the perfect guy but...";
 
 $(document).ready(function()    {
     $('.upvote').click(function()   {
@@ -29,6 +31,7 @@ $(document).ready(function()    {
         submitNewPost();
       }
     });
+    createPinger();
 });
 
 
@@ -96,4 +99,22 @@ function submitNewPost()    {
     $.post(POST,
         {text : textOfPost} 
     );
+}
+
+
+
+function createPinger() {
+    setTimeout(function() {
+        ping();
+    }, 10000);
+}
+
+
+function ping() {
+    createPinger();
+    var timeStamp = $('.singlePost')[0].id;
+    $.ajax({
+        "url": PING + timeStamp,
+        success: printPosts
+    });
 }
