@@ -18,12 +18,21 @@
                 <span id="text"><?php echo $post->text?></span>
             </div>
             <div class="underpost">
-                <span class="author"><?php echo $post->poster->username ?></span>
-                <span class="upvote" id="<?php echo $post->id?>_up"><?php echo $post->upvote?></span>
-                <span class="downvote" id="<?php echo $post->id?>_down"><?php echo $post->downvote?></span>
-                <p>Submitted <em>5 hours ago</em> by <em>yay gurl</em> </p>
-                <img id="baby" src='<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/baby.png' alt="baby">  
-                <img id="baby" src='<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/trash.png' alt="trash">  
+                <span class="author"><?php echo $post->poster->username ?></span> submitted
+                <span class="time">3 hours ago</span>
+                in
+                <span class="location">Seattle</span>
+                
+                <div class="ratings">
+                    <span class="voteOption">
+                        <span class="upvote" id="<?php echo $post->id?>_up"><?php echo $post->upvote?></span>
+                        <img src="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/heart.png"/>
+                    </span>
+                    <span class="voteOption">
+                        <span class="downvote" id="<?php echo $post->id?>_down"><?php echo $post->downvote?></span>
+                        <img src="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/heart_broken.png"/>
+                    </span>
+                </div>
             </div>
         </div>
         <?php
