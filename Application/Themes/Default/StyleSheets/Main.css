@@ -261,3 +261,7 @@ ul#nav li:hover
     background-color: #FAE1EB;
     border-left: 8px solid <?php echo $borderColor ?>;
 }
+
+.voteOption:hover   {
+    background-color: #ddd;
+}

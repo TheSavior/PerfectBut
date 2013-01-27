@@ -63,11 +63,7 @@ function updateVoteCount(voteType , theCounter)  {
     url2 += parseInt(theCounter.attr('id')) + "/" + voteType;
     var voteNum = parseInt(theCounter.text()) + 1;
     theCounter.text(voteNum);
-    $.ajax({
-            type : POST ,
-            "url": url2 ,
-            dataType: 'json' 
-    });  
+    $.post(url2);  
 }
 
 // Prints new post if user is logged in depends on signInAjax
