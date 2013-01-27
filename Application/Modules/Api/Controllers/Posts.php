@@ -29,6 +29,8 @@ class Posts extends \Saros\Application\Controller
                                                     
     public function getAllAction() {
         $this->view->show(false);
+        header("Content-Type: application/json", true);
+        
         
         $items = array();
         $posts = $this->mapper->all('\Application\Entities\Posts')->order(array("date_created"=>"desc"))->limit();

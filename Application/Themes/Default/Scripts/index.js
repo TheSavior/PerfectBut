@@ -1,3 +1,9 @@
+<?php
+header("Content-type: application/x-javascript");
+?>
+
+"use strict";
+
 var url = "http://localhost/PerfectBut/Api/Posts/getAll";
 
 
@@ -10,9 +16,9 @@ $(document).ready(function()    {
 
 
 function printPosts (data)  {
-     alert(data);
-     $.each(data, function(i){
-           
+    alert(data);
+    $.each(data, function(i){
+
             var resource = data.response[i];
             var $newPost = $('<div>').addClass('singlepost').appendTo('TheWall')
             $('<a>').addClass('posttext').text(resource.text).appendTo($newPost);
@@ -20,20 +26,21 @@ function printPosts (data)  {
             $('<p>').addClass('downvote').text(resource.downvotes).appendTo($newPost);
             $('<p>').addClass('author').text(resource.username).appendTo($newPost);
             $('<p>').addClass('time').text(resource.timestamp).appendTo($newPost);
- 
-        });
-}
 
-function loadPosts()    {
-    $.ajax({
-            url: url ,
-            dataType: 'jsonp' ,
-            success: printPosts 
     });
 }
 
+function loadPosts()    {
+    $.ajax(
+        {
+            dataType: "json",
+            url: url,
+            success: printPosts
+    });                     
+}
+
 function updateVoteCount()  {
-     $.ajax({
+    $.ajax({
             url: url ,
             dataType: 'jsonp' ,
             success: printVoteCount 
