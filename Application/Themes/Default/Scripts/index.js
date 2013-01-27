@@ -64,7 +64,9 @@ function loadPosts()    {
 function updateVoteCount(voteType , theCounter)  {
     var url2 = VOTE;
     url2 += parseInt(theCounter.attr('id')) + "/" + voteType;
-    var voteNum = url2.substring(0).parseInt(theCounter.text()) + 1;
+    alert(theCounter);
+    var voteNum = substring(0).parseInt(theCounter.text()) + 1;
+    alert(voteNum);
     theCounter.text(voteNum);
     $.post(url2);  
 }
@@ -86,13 +88,15 @@ function submitNewPost()    {
     $('<span>').text('Submitted ').appendTo($underpost);
     $('<span>').addClass('time').text('Just Now').appendTo($underpost);
     $('<span>').addClass('location').text(' in Seattle').appendTo($underpost);
-    var $ratings = $('<div>').addClass('ratings').appendTo($underpost);
+    var $ratings = $('<div>').addClass('ratings').appendTo($posttext);
     var $voteOption = $('<span>').addClass('voteOption upvote').appendTo($ratings);
-    $('<span>').addClass('upvote').text('0').appendTo($voteOption);
-    $('<img>').attr('src' , 'http://localhost/PerfectBut/Application/Themes/Default/Images/heart.png').appendTo($voteOption);
+    $('<span>').text('(0)').appendTo($voteOption);
+    $('<img>').attr('src' , 'http://tranquil-wave-1815.herokuapp.com/Application/Themes/Default/Images/ring_big.png').appendTo($voteOption);
+    $('<span>').text('Take Him').appendTo($voteOption);
     var $voteOption2 = $('<span>').addClass('voteOption downvote').appendTo($ratings);
-    $('<span>').addClass('downvote').text('0').appendTo($voteOption2);
-    $('<img>').attr('src' , 'http://localhost/PerfectBut/Application/Themes/Default/Images/heart_broken.png').appendTo($voteOption2);
+    $('<span>').text('(0)').appendTo($voteOption2);
+    $('<img>').attr('src' , 'http://tranquil-wave-1815.herokuapp.com/Application/Themes/Default/Images/ring_big.png').appendTo($voteOption2);
+    $('<span>').text('Leave Him').appendTo($voteOption2);
     $newPost.fadeIn(500);
     $('#query').val('');
 
