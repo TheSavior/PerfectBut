@@ -88,4 +88,16 @@ class Posts extends \Saros\Application\Controller
         $post->date_created = time();
         $this->registry->mapper->insert($post);
     }
+    
+    public function allAfterAction($timestamp) {
+        $this->view->show(false);
+                                
+        $items = array();
+        $posts = $this->mapper->all('\Application\Entities\Posts', array("date_created >" => $timestamp))->order(array("date_created"=>"desc"))->limit();
+        foreach($posts as $post) {
+            $items[] = array("text"=> $post->text, "username" => $post->poster->username, "upvotes" => $post->upvote, "downvotes" => $post->downvote, "timestamp" => $post->date_created);
+        }
+
+        echo json_encode($items);
+    }
 }
