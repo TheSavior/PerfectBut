@@ -69,7 +69,8 @@ function updateVoteCount(voteType , theCounter)  {
 
 // Prints new post if user is logged in depends on signInAjax
 function submitNewPost(data)    {
-    if(data != null)    {
+    console.log(data.responseText);
+    if(data.responseText != "null")    {
         var textOfPost = $('#query').val();
         var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
         var $posttext = $('<div>').addClass('posttext').appendTo($newPost);
@@ -89,10 +90,11 @@ function submitNewPost(data)    {
         $('<span>').addClass('downvote').text('0').appendTo($voteOption2);
         $('<img>').attr('src' , 'http://localhost/PerfectBut/Application/Themes/Default/Images/heart_broken.png').appendTo($voteOption2);
 
-        
         $.post(POST,
             {text : textOfPost} 
         );
+    }else{
+        $('#loginPopup').show();
     }
 }
 
@@ -110,7 +112,7 @@ function register() {
 function signInAjax()   {
     $.ajax({
         "url": userAuth,
-        success : submitNewPost
+        complete : submitNewPost
     });
 
 }

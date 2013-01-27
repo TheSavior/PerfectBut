@@ -24,7 +24,7 @@
             <div id="banner">
                 <h1><span>He's The</span><br /><span>Perfect Guy But...</span></h1>
                 <div id="queryp"><input type="text" id="query" autofocus="autofocus"><button id="querySubmit"></button></div>
-                <div id = "loginPopup" display="none">
+                <div id = "loginPopup">
                     <div id="pointer">
                         <!-- pointer for the login popup -->
                     </div>
