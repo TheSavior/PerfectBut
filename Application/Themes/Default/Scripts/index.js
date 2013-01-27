@@ -69,6 +69,9 @@ function updateVoteCount(voteType , theCounter)  {
 // Prints new post if user is logged in depends on signInAjax
 function submitNewPost()    {
     var textOfPost = $('#query').val();
+    var textOfPost = textOfPost.replace('nigger', 'timothy');
+    var textOfPost = textOfPost.replace('niggers', 'people');
+    var textOfPost = textOfPost.replace('faggot', 'rainbow');
     var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
     $newPost.hide();
     var $posttext = $('<div>').addClass('posttext').appendTo($newPost);
