@@ -1,4 +1,4 @@
-<h2><a href="thewall.html">The Wall</a></h2>
+<h2>The Wall</h2>
 <div id ="TheWall">
     <?php
         foreach ($this->Posts as $post) {

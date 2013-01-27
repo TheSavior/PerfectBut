@@ -17,21 +17,20 @@
         <?php echo $this->headScripts()->addScript("index") ?>
     </head>
     <body>
-        <div id="container">
-            <div id = "Header">
-                <h1>Perfect Guy But...</h1>
-            </div>    
-
-            <div id = "Banner">
-                <p><input type="text" id="query" autofocus="autofocus"><button id="querySubmit">Post</button></p>
-            </div>
-            
-            <div id = "loginPopup">
+        <div id="banner">
+                <div id = "name">
+                    <p>PERFECTGUYBUT.COM<p>
+                </div>
+                <h1>He's The <br /> Perfect Guy But...</h1>
+                 <p><input type="text" id="query" autofocus="autofocus"><button id="querySubmit">Post</button></p>
+            </div>  
+        <div id="container">  
+            <div id = "loginPopup" display="none">
                 <div id="pointer">
                   <!-- pointer for the login popup -->
                 </div>
-                Username<input type="text" id="username" autofocus="autofocus">
-                Password<input type="text" id="password" autofocus="autofocus">    
+                <label><span>Nickname</span><input type="text" id="username" autofocus="autofocus"></label><br />
+                <label><span>Password</span><input type="password" id="password" autofocus="autofocus"></span></label>
             </div>    
 
             <ul>

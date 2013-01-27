@@ -1,5 +1,14 @@
+body,html{
+	margin: 0;
+	padding: 0;
+}
+
 body {
     background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/purty_wood.png');
+}
+
+h2{
+	text-align: center;
 }
 
 #container    {
@@ -8,11 +17,34 @@ body {
     width: 800px;
 }
 
-#Header h1{
+#banner{
+	background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/banner.png');
+	background-repeat: no-repeat;
+	width: 1020px;
+	height: 616px;
+	margin: auto;
+}
+
+#name{
+	width: 700px;
+	height: 100px;
+	border-bottom: solid white 1px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#name p{
+	color: white;
+	font-weight: bold;
+	padding-top: 40px;
+}
+
+#banner h1{
 	font-family: Kavoon;
 	color: orange;
 	font-size: 50pt;
 	text-shadow: 5px 5px 0px #eee, 7px 7px 0px #707070;
+	text-align: center;
 }
 
 .singlepost  {
@@ -23,6 +55,13 @@ body {
 
 .singlepost p{
 	text-align: center;
+}
+
+#query{
+	margin-left: 260px;
+	width: 500px;
+	height: 50px;
+
 }
 
 #baby{
@@ -43,14 +82,23 @@ body {
 	border: solid black 7px;
 	border-radius: 10px;
 	background-color: white;
+	display: none;
 }
 
 #loginPopup input{
-	margin-top: 0px;
-	margin-bottom: 10px;
-	margin-left: 100px;
-	float: right;
+	margin: 0px;
 }
+
+#loginPopup span {
+	float: left;
+	display: block;
+	width: 80px;
+}
+
+#loginPopup label{
+	margin-left: 5px;
+}
+
 
 #pointer{
 	position: relative;
@@ -72,12 +120,12 @@ body {
 }
 
 #querySubmit{
-	display: inline-block;
+	display: inline;
   	width: 50px;
   	height: 30px;
   	position: relative;
-  	left: 350px;
-  	top: -30px;  
+  	left: -80px;
+  	top: 1.5px;  
 }
 
 #TheWall{
