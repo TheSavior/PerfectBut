@@ -20,7 +20,15 @@
         <?php echo $this->headScripts()->addScript("index") ?>
     </head>
     <body>
-        
+           <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123534114485999";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
             <div id="banner">
                 <h1><span>He's The</span><br /><span>Perfect Guy But...</span></h1>
                 <div id="queryp"><input type="text" id="query" autofocus="autofocus"><button id="querySubmit"></button></div>
