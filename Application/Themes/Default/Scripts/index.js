@@ -62,7 +62,7 @@ function updateVoteCount(voteType , theCounter)  {
 
 // Prints new post if user is logged in depends on signInAjax
 function submitNewPost(data)    {
-    if(data != null)    {
+    if(data != "")    {
         var textOfPost = $('#query').val();
         var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
         $('<span>').addClass('posttext').text(textOfPost).appendTo($newPost);
