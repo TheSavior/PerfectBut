@@ -69,7 +69,7 @@ class Users extends \Saros\Application\Controller
             \Application\Classes\ErrorCode::show(400);
         }
         
-        if (preg_match('/^[a-z\d_]{5,20}$/i', $_POST["username"])) {
+        if (!preg_match('/^[a-z\d_]{5,20}$/i', $_POST["username"])) {
             echo "Invalid username. Must be between 5 and 20 characters and can only have numbers, letters, and underscores";
             \Application\Classes\ErrorCode::show(400);
         }
