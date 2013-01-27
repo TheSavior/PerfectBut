@@ -60,4 +60,23 @@ class Posts extends \Saros\Application\Controller
             
         $this->mapper->update($post);
     }
+    
+    public function postAction($postText) {
+        $this->view->show(false);
+        
+        $this->requireAuth();
+        
+        if (strlen($postText) < 10 || strlen($postText) > 160) {
+            echo "Post is of an invalid length";
+            \Application\Classes\ErrorCode::show(400);
+        }
+        
+        $post = $this->registry->mapper->get('\Application\Entities\Posts');
+        $post->text = htmlspecialchars($postText);
+        
+        $auth = \Saros\Auth::getInstance();
+        $post->userId = $auth->getIdentity()->getIdentifier();
+        $post->date_created = time();
+        $this->registry->mapper->insert($post);
+    }
 }

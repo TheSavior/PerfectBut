@@ -12,8 +12,8 @@ class Posts extends \Spot\Entity
             'userId' => array('type' => 'int'),
             'text' => array('type' => 'string'),
             'date_created' => array('type' => 'int'),
-            'upvote' => array('type' => 'int'),
-            'downvote' => array('type' => 'int')   
+            'upvote' => array('type' => 'int', 'default' => 0),
+            'downvote' => array('type' => 'int', 'default' => 0)   
         );
     }
     
