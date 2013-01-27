@@ -15,6 +15,19 @@ class Index extends \Saros\Application\Controller
 		$this->view->Version = \Saros\Version::getVersion();
 	}
     
+    public function viewPostAction($id) 
+    {
+        $post = $GLOBALS["registry"]->mapper->get('\Application\Entities\Posts', $id);
+        if ($post) {
+            $this->view->Failure = false;
+            $this->view->Post = $post;
+        }
+        else
+        {
+            $this->view->Failure = true;
+        }
+    }
+    
     public function logoutAction() {
         $this->view->show(false);
         
