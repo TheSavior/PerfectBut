@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="underpost">
-                <span class="author"><?php echo $post->poster->username ?></span> submitted
+                Submitted
                 <span class="time post_<?php echo $post->date_created?>"><?php echo \Application\Classes\Utils::formatDate($post->date_created); ?></span>
                 in
                 <span class="location"><?php echo $city?></span>

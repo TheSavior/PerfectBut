@@ -31,8 +31,7 @@ class Posts extends \Saros\Application\Controller
 
     public function getAllAction() {
         $this->view->show(false);
-
-
+                
         $items = array();
         $posts = $this->mapper->all('\Application\Entities\Posts')->order(array("date_created"=>"desc"))->limit();
         foreach($posts as $post) {
@@ -65,7 +64,7 @@ class Posts extends \Saros\Application\Controller
     public function postAction() {
         $this->view->show(false);
 
-        $this->requireAuth();
+        //$this->requireAuth();
 
         if (!isset($_POST["text"])){
             echo "You must specify the post field 'text'";
