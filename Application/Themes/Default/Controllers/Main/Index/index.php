@@ -19,17 +19,17 @@
             </div>
             <div class="underpost">
                 <span class="author"><?php echo $post->poster->username ?></span> submitted
-                <span class="time"><?php echo \Application\Classes\Utils::formatDate($post->date_created); ?></span>
+                <span class="time post_<?php echo $post->date_created?>"><?php echo \Application\Classes\Utils::formatDate($post->date_created); ?></span>
                 in
                 <span class="location">Seattle</span>
                 
                 <div class="ratings">
-                    <span class="voteOption">
-                        <span class="upvote" id="<?php echo $post->id?>_up"><?php echo $post->upvote?></span>
+                    <span class="voteOption upvote">
+                        <span id="<?php echo $post->id?>_up"><?php echo $post->upvote?></span>
                         <img src="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/heart.png"/>
                     </span>
-                    <span class="voteOption">
-                        <span class="downvote" id="<?php echo $post->id?>_down"><?php echo $post->downvote?></span>
+                    <span class="voteOption downvote">
+                        <span id="<?php echo $post->id?>_down"><?php echo $post->downvote?></span>
                         <img src="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/heart_broken.png"/>
                     </span>
                 </div>

@@ -103,7 +103,6 @@ h2{
 
 .singlepost  {           
     width: 700px;
-    
     margin-bottom: 23px;      
 }
 
@@ -126,6 +125,11 @@ h2{
 
 .ratings .voteOption {
     margin-right: 20px;
+    cursor: pointer;
+}
+
+.ratings .voteOption span:hover {
+    text-decoration: underline;
 }
 
 .underpost .author, .underpost .time {

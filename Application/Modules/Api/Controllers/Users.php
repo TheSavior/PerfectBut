@@ -56,4 +56,37 @@ class Users extends \Saros\Application\Controller
             $_SESSION["password"] = $_POST["password"];
         }
     }
+    
+    public function registerAction() {
+        if($_SERVER['REQUEST_METHOD'] == "POST") 
+        {
+            \Application\Classes\ErrorCode::show(400);
+        }
+        
+        if (!isset($_POST["username"]) || !isset($_POST["password"])) {
+            \Application\Classes\ErrorCode::show(400);
+        }
+        
+        if (preg_match('/^[a-z\d_]{5,20}$/i', $_POST["username"])) {
+            echo "Invalid username. Must be between 5 and 20 characters and can only have numbers, letters, and underscores";
+            \Application\Classes\ErrorCode::show(400);
+        }
+
+        // Verify that nobody has that username
+        $user = \Application\Classes\Utils::getUser($_POST["username"]);
+        if ($user){
+            echo "A user is already using that username. Please go back and try again.";
+            \Application\Classes\ErrorCode::show(400);
+        }
+
+        $user = $GLOBALS["registry"]->mapper->get('\Application\Entities\Users');
+        
+        $user->username = $_POST["username"];
+        $user->salt = \Application\Classes\Utils::generateSalt();
+        $user->password = sha1($user->salt.$_POST["password"]);
+        $GLOBALS["registry"]->mapper->insert($user);
+        
+        $_SESSION["username"] = $user->username;
+        $_SESSION["password"] = $user->password;
+    }
 }
