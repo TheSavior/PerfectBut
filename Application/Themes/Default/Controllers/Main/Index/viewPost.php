@@ -32,16 +32,16 @@
             <div class="underpost">
                 Submitted
                 <span class="time"><?php echo \Application\Classes\Utils::formatDate($post->date_created); ?></span>
-                in
+                <!--in
                 <span class="location"><?php echo $city?></span>
-                
+                    -->
                 <div class="ratings">
-                    <span class="voteOption upvote">
-                        <span id="<?php echo $post->id?>_up"><?php echo $post->upvote?></span>
+                    <span class="voteOption upvote" id="<?php echo $post->id?>_up">
+                        <span><?php echo $post->upvote?></span>
                         <img src="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/heart.png"/>
                     </span>
-                    <span class="voteOption downvote">
-                        <span id="<?php echo $post->id?>_down"><?php echo $post->downvote?></span>
+                    <span class="voteOption downvote" id="<?php echo $post->id?>_down">
+                        <span><?php echo $post->downvote?></span>
                         <img src="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/heart_broken.png"/>
                     </span>
                 </div>
