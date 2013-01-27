@@ -229,6 +229,7 @@ h2{
 
 #ads {
     padding: 5px;
+    clear: left;
     float: left;
 }
 
@@ -277,14 +278,8 @@ ul#nav li:hover
     vertical-align: bottom;
 }
 
-.voteOption:hover   {
-    background-color: #ddd;
-}
-
 #pagelike {
     background-color: white;
     padding: 3px;
-    position:fixed;
-    right: 0;
-    border: 5px inset rgb(242, 0, 83);
+    float: left;
 }

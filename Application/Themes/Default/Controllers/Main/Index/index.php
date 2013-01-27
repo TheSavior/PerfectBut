@@ -28,12 +28,12 @@
                 <span class="text"><?php echo $post->text?></span>
                 <div class="ratings">
                     <span class="voteOption upvote" id="<?php echo $post->id?>_up">
-                        <span>(<?php echo $post->upvote?>)</span>
+                        <span id="upcount">(<?php echo $post->upvote?>)</span>
                         <img src="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/ring_big.png"/>
                         <span>Take Him</span>
                     </span>
                     <span class="voteOption downvote" id="<?php echo $post->id?>_down">
-                        <span>(<?php echo $post->downvote?>)</span>
+                        <span id="downcount">(<?php echo $post->downvote?>)</span>
                         <img src="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/run_big.png"/>
                         <span>Leave Him</span>
                     </span>
