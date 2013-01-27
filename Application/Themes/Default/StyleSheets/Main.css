@@ -280,3 +280,11 @@ ul#nav li:hover
 .voteOption:hover   {
     background-color: #ddd;
 }
+
+#pagelike {
+    background-color: white;
+    padding: 3px;
+    position:fixed;
+    right: 0;
+    border: 5px inset rgb(242, 0, 83);
+}

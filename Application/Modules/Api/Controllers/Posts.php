@@ -72,16 +72,17 @@ class Posts extends \Saros\Application\Controller
         }
         
         $postText = $_POST["text"];
-        
+          
         if (strlen($postText) < 10 || strlen($postText) > 160) {
             echo "Post is of an invalid length";
             \Application\Classes\ErrorCode::show(400);
         }
-        
+            
         $location = $this->getCity();
-        
-
+              
         $post = $this->registry->mapper->get('\Application\Entities\Posts');
+        
+        $postText = preg_replace('/[^(\x20-\x7F)]*/','', $postText);
         $post->text = htmlspecialchars($postText);
 
         //$auth = \Saros\Auth::getInstance();

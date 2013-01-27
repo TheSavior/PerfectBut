@@ -41,9 +41,10 @@
                     <br>
                      <button id = "userLogin">Login</button>
                      <button id = "registerButton">Make a new account</button>
-                </div>    
+                </div>  
             </div>
         <div id="container">
+        <div id="pagelike" class="fb-like-box" data-href="http://www.facebook.com/PerfectGuyBut" data-width="292" data-show-faces="false" data-stream="false" data-header="true"></div>
             <div id="tail">
             </div> 
 
