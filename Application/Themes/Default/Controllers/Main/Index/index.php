@@ -14,8 +14,8 @@
         ?>
         <div class ="singlepost">
             <div class="posttext">
-                <span id="intro">He's the perfect guy but...</span><br />
-                <span id="text"><?php echo $post->text?></span>
+                <span class="intro">He's the perfect guy but...</span><br />
+                <span class="text"><?php echo $post->text?></span>
             </div>
             <div class="underpost">
                 <span class="author"><?php echo $post->poster->username ?></span> submitted

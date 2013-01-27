@@ -94,7 +94,7 @@ h2{
    padding: 20px;  
 }
 
-.posttext #text
+.posttext .text
 {
     font-weight: bold;
     font-size: 24pt;
