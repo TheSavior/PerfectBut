@@ -35,19 +35,6 @@
         <div id="container">  
             
 
-            <ul>
-                <?php
-                    $link = "";
-                    if ($auth->hasIdentity()) {
-                        $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Index", "logout").'">Logout</a>';
-                    }
-                    else
-                    {
-                        $link = '<a href="'.$GLOBALS["registry"]->utils->makeLink("Register", "index").'">Login</a>';
-                    }
-                ?>
-                <li id="login"><?php echo $link?></li>
-            </ul>
             <?php
                 echo $this->content() 
             ?>
