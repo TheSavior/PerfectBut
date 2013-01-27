@@ -1,5 +1,11 @@
 <h2>The Wall</h2>
 <div id ="TheWall">
+    <div class="tabs"></div>
+    <div class="tabs"></div>
+    <div class="tabs"></div>
+    <div class="tabs"></div>
+    <div class="tabs"></div>
+
     <?php
         foreach ($this->Posts as $post) {
         ?>

@@ -41,11 +41,18 @@ h2{
 	padding-top: 40px;
 }
 
+.tabs{
+	width: 100px;
+	height: 50px;
+	border
+}
+
 #banner h1{
 	font-family: Knewave;
 	color: white;
 	font-size: 50pt;
 	text-align: center;
+	margin-top: 0px;
 }
 
 .singlepost  {
