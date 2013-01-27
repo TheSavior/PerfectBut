@@ -14,16 +14,26 @@
     }
     else
     {
+        
+                   
         $post = $this->Post;
         $city = "Unknown";
         
         if ($post->city)
             $city = $post->city;
         ?>
+        
+        <!-- Definitely definitely not where this belongs. Nifty hack -->
+        
+        <meta property="og:description" content="<?php echo $post->text?>"/>
+        
         <div class ="singlepost">
             <div class="posttext">
                 <span class="intro">He's the perfect guy but...</span><br />
                 <span class="text"><?php echo $post->text?></span>
+                <div style="float: right;">
+                    <div class="fb-like" data-href="http://perfectguybut.com/Index/viewPost/2" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+                </div>
             </div>
             <div class="underpost">
                 <span class="author"><?php echo $post->poster->username ?></span> submitted
