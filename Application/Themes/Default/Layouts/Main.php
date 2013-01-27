@@ -13,6 +13,7 @@
         <?php echo $this->headStyles()->addStyle("Main") ?>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
         <?php echo $this->headScripts()->addScript("index") ?>
     </head>
     <body>
@@ -23,6 +24,14 @@
 
             <div id = "Banner">
                 <p><input type="text" id="query" autofocus="autofocus"><button id="querySubmit">Post</button></p>
+            </div>
+            
+            <div id = "loginPopup">
+                <div id="pointer">
+                  <!-- pointer for the login popup -->
+                </div>
+                Username<input type="text" id="username" autofocus="autofocus">
+                Password<input type="text" id="password" autofocus="autofocus">    
             </div>    
 
             <ul>

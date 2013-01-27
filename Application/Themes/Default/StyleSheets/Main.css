@@ -1,13 +1,88 @@
 body {
-    background-color: orange;
+    background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/purty_wood.png');
 }
 
 #container    {
-    margin-left: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
 }
 
-.singlepost    {
-        border: 3px solid black;
-        width:600px;
-        height:100px;
+#Header h1{
+	font-family: Kavoon;
+	color: orange;
+	font-size: 50pt;
+	text-shadow: 5px 5px 0px #eee, 7px 7px 0px #707070;
+}
+
+.singlepost  {
+    height: 100px;
+    margin-bottom: 8px;
+    background-color: white;
+}
+
+.singlepost p{
+	text-align: center;
+}
+
+#baby{
+	width: 20px;
+	height: 20px;
+}
+
+#Banner{
+	/*width: 400px;
+	margin-left: auto;
+	margin-right: auto;*/
+}
+
+#loginPopup{
+	float: right;
+	width: 300px;
+	height: 100px;
+	border: solid black 7px;
+	border-radius: 10px;
+	background-color: white;
+}
+
+#loginPopup input{
+	margin-top: 0px;
+	margin-bottom: 10px;
+	margin-left: 100px;
+	float: right;
+}
+
+#pointer{
+	position: relative;
+	width: 10px;
+	height: 10px;
+	border: solid black 7px;
+	top: -11px;
+	transform: rotate(45deg);
+	-ms-transform: rotate(45deg); /* IE 9 */
+	-webkit-transform: rotate(45deg); /* Safari and Chrome */
+	-o-transform: rotate(45deg); /* Opera */
+	-moz-transform: rotate(45deg); /* Firefox */
+	background-color: black;
+}
+
+#create{
+	margin-left: 600px;
+	margin-bottom: 0px;
+}
+
+#querySubmit{
+	display: inline-block;
+  	width: 50px;
+  	height: 30px;
+  	position: relative;
+  	left: 350px;
+  	top: -30px;  
+}
+
+#TheWall{
+	border: solid black 7px;
+	border-radius: 7px; 
+	width: 800px;
+	background-color: black;
 }

@@ -1,5 +1,5 @@
+<h2><a href="thewall.html">The Wall</a></h2>
 <div id ="TheWall">
-    <h2><a href="thewall.html">The Wall</a></h2>
     <?php
         foreach ($this->Posts as $post) {
         ?>
@@ -8,6 +8,9 @@
             <span class="author"><?php echo $post->poster->username ?></span>
             <span class="upvote" id="<?php echo $post->id?>_up"><?php echo $post->upvote?></span>
             <span class="downvote" id="<?php echo $post->id?>_down"><?php echo $post->downvote?></span>
+            <p>Submitted <em>5 hours ago</em> by <em>yay gurl</em> </p>
+            <img id="baby" src='<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/baby.png' alt="baby">  
+            <img id="baby" src='<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/trash.png' alt="trash">  
         </div>
         <?php
         }                                    
