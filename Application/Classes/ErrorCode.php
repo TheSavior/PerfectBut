@@ -8,9 +8,8 @@ class ErrorCode
             400 => "HTTP/1.1 400 Bad Request",
             401 => "HTTP/1.0 401 Unauthorized",
         );
-        
-        
-        if (!in_array($code, $array)) {
+             
+        if (!isset($array[$code])) {
             throw new \Exception("Invalid error code");
         }
         

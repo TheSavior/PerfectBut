@@ -29,10 +29,11 @@ class Users extends \Saros\Application\Controller
         \Application\Classes\ErrorCode::show(400);  
     }
 
-    public function isLoggedInAction() {
+    public function currentUserAction() {
         $this->view->show(false);
-           
+                           
         $auth = \Saros\Auth::getInstance();
-        echo json_encode($auth->hasIdentity());
+        $this->requireAuth();
+        echo json_encode($auth->getIdentity()->username);
     }
 }
