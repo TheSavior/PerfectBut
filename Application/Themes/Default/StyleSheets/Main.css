@@ -29,10 +29,10 @@ h2{
 }
 
 #banner{
-	background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/banner.png');
+	background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/new_header.png');
 	background-repeat: no-repeat;
     background-position: center;
-	height: 410px;
+	height: 328px;
 	margin: auto;
     background-color: rgb(242, 0, 83);
     text-align: center;
