@@ -7,6 +7,7 @@ class ErrorCode
         $array = array(
             400 => "HTTP/1.1 400 Bad Request",
             401 => "HTTP/1.0 401 Unauthorized",
+            403 => "HTTP/1.1 403 Forbidden",
         );
              
         if (!isset($array[$code])) {
