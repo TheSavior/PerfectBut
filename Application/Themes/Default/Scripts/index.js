@@ -68,11 +68,24 @@ function submitNewPost(data)    {
     if(data != "")    {
         var textOfPost = $('#query').val();
         var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
-        $('<span>').addClass('posttext').text(textOfPost).appendTo($newPost);
-        $('<span>').addClass('author').text(data).appendTo($newPost);
-        $('<span>').addClass('upvote').text("0").appendTo($newPost);
-        $('<span>').addClass('downvote').text("0").appendTo($newPost);
-        $('<p>').addClass('time').text("Just Now").appendTo($newPost);
+        var $posttext = $('<div>').addClass('posttext').appendTo($newPost);
+        $('<span>').addClass('intro').text('he\'s the perfect guy but...').appendTo($posttext);
+        $('<br>').appendTo($posttext);
+        $('<span>').addClass('text').text(textOfPost).appendTo($posttext);
+        var $underpost = $('<div>').addClass('underpost').appendTo($newPost);
+        $('<span>').addClass('author').text(data).appendTo($underpost);
+        $('<span>').text(' submitted ').appendTo($underpost);
+        $('<span>').addClass('time').text('Just Now').appendTo($underpost);
+        $('<span>').addClass('location').text(' in Seattle').appendTo($underpost);
+        var $ratings = $('<div>').addClass('ratings').appendTo($underpost);
+        var $voteOption = $('<span>').addClass('voteOption upvote').appendTo($ratings);
+        $('<span>').addClass('upvote').text('0').appendTo($voteOption);
+        $('<img>').attr('src' , 'http://localhost/PerfectBut/Application/Themes/Default/Images/heart.png').appendTo($voteOption);
+        var $voteOption2 = $('<span>').addClass('voteOption downvote').appendTo($ratings);
+        $('<span>').addClass('downvote').text('0').appendTo($voteOption2);
+        $('<img>').attr('src' , 'http://localhost/PerfectBut/Application/Themes/Default/Images/heart_broken.png').appendTo($voteOption2);
+
+        
         $.post(POST,
             {text : textOfPost} 
         )
@@ -94,11 +107,13 @@ function showLogin()    {
     $('#loginPopup').show();
 }
 
+// checks to see if login is valid
 function userLogin()    {
     var $userName = $('#username').val();
     var $userPass = $('#password').val();
     $.post(login ,
-        {username : $userName , password : $userPass} ,
-    function() { $('#loginPopup').hide();
-    })
+        {username : $userName , password : $userPass} , 
+    
+
+    function() { $('#loginPopup').hide(); })
 }
