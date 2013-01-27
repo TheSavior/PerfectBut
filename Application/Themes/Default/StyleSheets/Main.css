@@ -9,7 +9,8 @@ body,html{
 }
 
 body {
-    background-color: rgb(220, 220, 220);
+    /*background-color: rgb(220, 220, 220);*/
+    background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/diagonal_striped_brick.png');
 }
 
 h2{
@@ -96,7 +97,8 @@ h2{
 
 .singlepost  {           
     width: 700px;
-    margin-bottom: 8px;      
+    
+    margin-bottom: 23px;      
 }
 
 .singlepost p{
@@ -107,12 +109,24 @@ h2{
     background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/post_tail.png');    
     background-repeat: no-repeat;
     background-position: 20px 0px;
-    padding-left: 35px;
+    padding-left: 85px;
+    padding-top: 15px;
+    color: rgb(50,50,50);
 }
 
-.underpost .author {
+.underpost .ratings {
+    float: right;    
+}
+
+.ratings .voteOption {
+    margin-right: 20px;
+}
+
+.underpost .author, .underpost .time {
     font-family: "Open Sans";
     font-size: 14pt;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 #query{
