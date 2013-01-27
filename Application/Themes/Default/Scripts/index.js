@@ -53,13 +53,12 @@ function loadPosts()    {
 
 // Increments vote counter and sends increment to server
 function updateVoteCount(voteType , theCounter)  {
-    
+    var url2 = VOTE;
     url2 += parseInt(theCounter.attr('id')) + "/" + voteType;
     var voteNum = parseInt(theCounter.text()) + 1;
-    console.log(url2);
     theCounter.text(voteNum);
     $.ajax({
-            "url": VOTE ,
+            "url": url2 ,
             dataType: 'json' 
     });  
 }
