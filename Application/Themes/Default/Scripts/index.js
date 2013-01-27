@@ -59,6 +59,7 @@ function updateVoteCount(voteType , theCounter)  {
     var voteNum = parseInt(theCounter.text()) + 1;
     theCounter.text(voteNum);
     $.ajax({
+            type : POST ,
             "url": url2 ,
             dataType: 'json' 
     });  
@@ -66,7 +67,7 @@ function updateVoteCount(voteType , theCounter)  {
 
 // Prints new post if user is logged in depends on signInAjax
 function submitNewPost(data)    {
-    if(data != "")    {
+    if(data != null)    {
         var textOfPost = $('#query').val();
         var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
         var $posttext = $('<div>').addClass('posttext').appendTo($newPost);
@@ -98,12 +99,7 @@ function submitNewPost(data)    {
 function signInAjax()   {
     $.ajax({
         "url": userAuth,
-        success: submitNewPost ,
-        statusCode : {
-            401: function() {
-                $('#loginPopup').show(); 
-            }
-        }
+        success : submitNewPost
     });
 
 }
