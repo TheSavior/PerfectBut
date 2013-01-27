@@ -34,7 +34,7 @@ class Setup
     public function doSetup($registry)
     {
         $cfg = new \Spot\Config();
-        $cfg->addConnection('mysql', 'mysql://'.$_SERVER["DBUSER"].':'.$_SERVER["DBPASS"].'@'.$_SERVER["HOSTNAME"].'/'.$_SERVER["DBNAME"]);
+        $cfg->addConnection('mysql', $registry->config->db);
         $registry->mapper = new \Spot\Mapper($cfg);
 
         $auth = \Saros\Auth::getInstance();
