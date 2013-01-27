@@ -9,23 +9,27 @@ var url = "http://localhost/PerfectBut/Api/Posts/getAll";
 
 
 $(document).ready(function()    {
-        $('upvote, downvote').click(updateVoteCount);
+    $('.upvote').click(function()   {
+        updateVoteCount("up" , $(this))
+});
 
-        loadPosts();
+    $('.downvote').click(function() {
+        updateVoteCount("down" , $(this))
+});
+    //loadPosts();
 });
 
 
 function printPosts (data)  {
     alert(data);
     $.each(data, function(i){
-
-            var resource = data.response[i];
-            var $newPost = $('<div>').addClass('singlepost').appendTo('TheWall')
-            $('<a>').addClass('posttext').text(resource.text).appendTo($newPost);
-            $('<p>').addClass('upvote').text(resource.upvotes).appendTo($newPost);
-            $('<p>').addClass('downvote').text(resource.downvotes).appendTo($newPost);
-            $('<p>').addClass('author').text(resource.username).appendTo($newPost);
-            $('<p>').addClass('time').text(resource.timestamp).appendTo($newPost);
+        var resource = data[i];
+        var $newPost = $('<div>').addClass('singlepost').appendTo('TheWall');
+        $('<a>').addClass('posttext').text(resource.text).appendTo($newPost);
+        $('<p>').addClass('upvote').text(resource.upvotes).appendTo($newPost);
+        $('<p>').addClass('downvote').text(resource.downvotes).appendTo($newPost);
+        $('<p>').addClass('author').text(resource.username).appendTo($newPost);
+        $('<p>').addClass('time').text(resource.timestamp).appendTo($newPost);
 
     });
 }
@@ -39,10 +43,17 @@ function loadPosts()    {
     });                     
 }
 
-function updateVoteCount()  {
+function updateVoteCount(voteType , theCounter)  {
+    var url2 = "http://localhost/PerfectBut/Api/Posts/vote/";
+    url2 += parseInt(theCounter.attr('id')) + "/" + voteType;
+    var voteNum = parseInt(theCounter.text()) + 1;
+    console.log(url2);
+
+    theCounter.text(voteNum);
     $.ajax({
-            url: url ,
-            dataType: 'jsonp' ,
-            success: printVoteCount 
-    });   
+            "url": url2 ,
+            dataType: 'json' 
+    });  
+
 }
+

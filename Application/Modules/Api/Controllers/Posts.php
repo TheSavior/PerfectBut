@@ -7,6 +7,9 @@ class Posts extends \Saros\Application\Controller
     
     public function init() {
         $this->mapper = $GLOBALS["registry"]->mapper;
+
+        
+        header("Content-Type: application/json", true);
     }
     
     /**
@@ -29,7 +32,6 @@ class Posts extends \Saros\Application\Controller
                                                     
     public function getAllAction() {
         $this->view->show(false);
-        header("Content-Type: application/json", true);
         
         
         $items = array();
