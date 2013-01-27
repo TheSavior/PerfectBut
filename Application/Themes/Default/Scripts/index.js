@@ -5,7 +5,7 @@ header("Content-type: application/x-javascript");
 
 "use strict";
 
-var url = <?php echo $_SERVER["ROOT"]?>
+var url = "<?php echo $_SERVER["ROOT"]?>";
 
 
 

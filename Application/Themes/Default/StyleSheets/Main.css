@@ -93,6 +93,7 @@ h2{
     font-size: 24pt;
 }
 
+
 .singlepost  {           
     width: 700px;
     margin-bottom: 8px;      
@@ -100,6 +101,18 @@ h2{
 
 .singlepost p{
 	text-align: center;
+}
+
+.singlepost .underpost {
+    background-image: url('<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/post_tail.png');    
+    background-repeat: no-repeat;
+    background-position: 20px 0px;
+    padding-left: 35px;
+}
+
+.underpost .author {
+    font-family: "Open Sans";
+    font-size: 14pt;
 }
 
 #query{
