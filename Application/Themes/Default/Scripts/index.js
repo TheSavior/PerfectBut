@@ -31,7 +31,6 @@ $(document).ready(function()    {
         submitNewPost();
       }
     });
-    createPinger();
 });
 
 
@@ -39,7 +38,7 @@ $(document).ready(function()    {
 function printPosts (data)  {
     $.each(data, function(i){
         var resource = data[i];
-        var $newPost = $('<div>').addClass('singlepost').appendTo('#TheWall');
+        var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
         $('<span>').addClass('posttext').text(resource.text).appendTo($newPost);
         $('<span>').addClass('upvote').text(resource.upvotes).appendTo($newPost);
         $('<span>').addClass('downvote').text(resource.downvotes).appendTo($newPost);
@@ -62,17 +61,18 @@ function loadPosts()    {
 // Increments vote counter and sends increment to server
 function updateVoteCount(voteType , theCounter)  {
     var url2 = VOTE;
+    var targetnum = $("#"+theCounter.attr('id') + 'count').text();
+    targetnum = parseInt(targetnum.substring(1));
+    $("#"+theCounter.attr('id') + 'count').text("(" + (targetnum + 1) + ")");
     url2 += parseInt(theCounter.attr('id')) + "/" + voteType;
-    alert(theCounter);
-    var voteNum = substring(0).parseInt(theCounter.text()) + 1;
-    alert(voteNum);
-    theCounter.text(voteNum);
+    theCounter.unbind();
     $.post(url2);  
 }
 
 // Prints new post if user is logged in depends on signInAjax
 function submitNewPost()    {
     var textOfPost = $('#query').val();
+    $('#query').val('');
     var textOfPost = textOfPost.toLowerCase().replace('nigger', 'timothy');
     var textOfPost = textOfPost.toLowerCase().replace('niggers', 'people');
     var textOfPost = textOfPost.toLowerCase().replace('faggot', 'rainbow');
@@ -94,32 +94,11 @@ function submitNewPost()    {
     $('<span>').text('Take Him').appendTo($voteOption);
     var $voteOption2 = $('<span>').addClass('voteOption downvote').appendTo($ratings);
     $('<span>').text('(0)').appendTo($voteOption2);
-    $('<img>').attr('src' , 'http://tranquil-wave-1815.herokuapp.com/Application/Themes/Default/Images/ring_big.png').appendTo($voteOption2);
+    $('<img>').attr('src' , 'http://tranquil-wave-1815.herokuapp.com/Application/Themes/Default/Images/run_big.png').appendTo($voteOption2);
     $('<span>').text('Leave Him').appendTo($voteOption2);
     $newPost.fadeIn(500);
-    $('#query').val('');
 
     $.post(POST,
         {text : textOfPost} 
     );
-}
-
-
-function 
-
-
-function createPinger() {
-    setTimeout(function() {
-        ping();
-    }, 10000);
-}
-
-
-function ping() {
-    createPinger();
-    var timeStamp = $('.singlePost')[0].id;
-    $.ajax({
-        "url": PING + timeStamp,
-        success: printPosts
-    });
 }
