@@ -85,7 +85,7 @@ class Posts extends \Saros\Application\Controller
             \Application\Classes\ErrorCode::show(400);
         }
             
-        $location = $this->getCity();
+        //$location = $this->getCity();
               
         $post = $this->registry->mapper->get('\Application\Entities\Posts');
         
@@ -96,10 +96,10 @@ class Posts extends \Saros\Application\Controller
         //$post->userId = $auth->getIdentity()->getIdentifier();
         $post->date_created = time();
         
-        if ($location)
+        /*if ($location)
         {
             $post->city = $location;
-        }
+        }*/
         
         $this->registry->mapper->insert($post);
     }
@@ -129,9 +129,9 @@ class Posts extends \Saros\Application\Controller
     
     public function allAfterAction($timestamp) {
         $this->view->show(false);
-        die();                        
+           
         $items = array();
-        $posts = $this->mapper->all('\Application\Entities\Posts', array("date_created >" => $timestamp))->order(array("date_created"=>"desc"));
+        $posts = $this->mapper->all('\Application\Entities\Posts', array("date_created >" => $timestamp))->order(array("date_created"=>"desc"))->limit(100);
         foreach($posts as $post) {
             $items[] = array("text"=> $post->text, "username" => $post->poster->username, "upvotes" => $post->upvote, "downvotes" => $post->downvote, "timestamp" => $post->date_created);
         }
