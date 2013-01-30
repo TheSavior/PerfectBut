@@ -15,6 +15,7 @@ var PING = url + "Api/Posts/allAfter/"
 var TAGLINE = "He's the perfect guy but...";
 
 var PING_SECONDS = 10;
+var TIME_SECONDS = 20;
 
 $(document).ready(function()    {
     $('.upvote').click(function()   {
@@ -28,6 +29,8 @@ $(document).ready(function()    {
     
     // Keep loading all the new posts
     setInterval(loadPosts, PING_SECONDS * 1000);
+    
+    setInterval(updateTime, TIME_SECONDS * 1000)
     
     $('#query').keydown(function(event) {
       if (event.keyCode == 13){
@@ -50,6 +53,13 @@ function printPosts (data)  {
         var post = createPost(resource);
         post.appendTo(wrapper);
     });
+    
+    // If we aren't removing anything, stop
+    if ($(wrapper).children().length == 0) {
+        $(wrapper).remove();
+        return;
+    }
+    
     $(wrapper).prependTo("#TheWall");
     $(wrapper).fadeIn(1000);
     
@@ -63,6 +73,13 @@ function printPosts (data)  {
     if (toRemove > 0) {
         $(".singlepost").slice(-toRemove).remove();
     }
+}
+
+function updateTime() {
+    $(".singlepost").each(function() {
+        var date = formatDate($(this).attr("id"));
+        $(this).find(".time").text(date);
+    });
 }
 
 // This loads new posts and sends data to printPosts

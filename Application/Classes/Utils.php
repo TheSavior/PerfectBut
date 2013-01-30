@@ -98,11 +98,9 @@ class Utils
         else if($diff < 60 * 60 * 24 * 30)
         {
             $result = floor($diff/(60*60*24));
-            $plural = self::plural($result);
-            $extra = "";
+            $plural = self::plural($result); 
             
             return $result." day".$plural." ago";
-                                                  
         }
         // else
         $result = floor($diff/(60*60*24*30));
