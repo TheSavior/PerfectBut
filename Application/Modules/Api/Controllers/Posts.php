@@ -35,7 +35,14 @@ class Posts extends \Saros\Application\Controller
         $items = array();
         $posts = $this->mapper->all('\Application\Entities\Posts')->order(array("date_created"=>"desc"))->limit();
         foreach($posts as $post) {
-            $items[] = array("id" => $post->id, 
+            $items[] = $this->postToArray($post);
+        }
+
+        echo json_encode($items);
+    }
+    
+    private function postToArray(\Application\Entities\Posts $post) {
+         return array("id" => $post->id, 
                             "text"=> $post->text, 
                             "username" => $post->poster->username, 
                             "upvotes" => $post->upvote, 
@@ -43,9 +50,6 @@ class Posts extends \Saros\Application\Controller
                             "timestamp" => $post->date_created,
                             "whenstring" => \Application\Classes\Utils::formatDate($post->date_created)
                             );
-        }
-
-        echo json_encode($items);
     }
 
     public function voteAction($postId, $vote) {
@@ -133,7 +137,7 @@ class Posts extends \Saros\Application\Controller
         $items = array();
         $posts = $this->mapper->all('\Application\Entities\Posts', array("date_created >" => $timestamp))->order(array("date_created"=>"desc"))->limit(100);
         foreach($posts as $post) {
-            $items[] = array("text"=> $post->text, "username" => $post->poster->username, "upvotes" => $post->upvote, "downvotes" => $post->downvote, "timestamp" => $post->date_created);
+            $items[] = $this->postToArray($post);
         }
 
         echo json_encode($items);
@@ -145,7 +149,7 @@ class Posts extends \Saros\Application\Controller
         $items = array();
         $posts = $this->mapper->all('\Application\Entities\Posts', array("date_created <" => $timestamp))->order(array("date_created"=>"desc"))->limit();
         foreach($posts as $post) {
-            $items[] = array("text"=> $post->text, "username" => $post->poster->username, "upvotes" => $post->upvote, "downvotes" => $post->downvote, "timestamp" => $post->date_created);
+            $items[] = $this->postToArray($post);
         }
 
         echo json_encode($items);
