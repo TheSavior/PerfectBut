@@ -27,7 +27,7 @@ $(document).ready(function()    {
     $('#querySubmit').click(submitNewPost);
     
     // Keep loading all the new posts
-    setInterval(loadPosts, PING_SECONDS * 1000);
+    //setInterval(loadPosts, PING_SECONDS * 1000);
     
     $('#query').keydown(function(event) {
       if (event.keyCode == 13){
