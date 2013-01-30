@@ -1,7 +1,5 @@
-
 <?php
 header("Content-type: application/x-javascript");
-
 ?>
 
 "use strict";
