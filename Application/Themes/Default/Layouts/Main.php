@@ -17,7 +17,7 @@
         <link href='http://fonts.googleapis.com/css?family=Knewave' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" href="<?php echo $_SERVER["ROOT"]?>Application/Themes/Default/Images/favicon.ico" type="image/x-icon" />
-        <?php echo $this->headScripts()->addScript("index") ?>
+        <?php echo $this->headScripts()->addScript("index")->addScript("postLoader") ?>
     </head>
     <body>
            <div id="fb-root"></div>

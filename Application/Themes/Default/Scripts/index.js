@@ -36,16 +36,17 @@ $(document).ready(function()    {
 
 // Prints new posts are the become available from ajax call
 function printPosts (data)  {
+    var firstPost = $(".singlepost")[0]
+    var wrapper = document.createElement("div");
+    $(wrapper).hide();
+    
     $.each(data, function(i){
         var resource = data[i];
-        var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
-        $('<span>').addClass('posttext').text(resource.text).appendTo($newPost);
-        $('<span>').addClass('upvote').text(resource.upvotes).appendTo($newPost);
-        $('<span>').addClass('downvote').text(resource.downvotes).appendTo($newPost);
-        $('<span>').addClass('author').text(resource.username).appendTo($newPost);
-        $('<p>').addClass('time').text(resource.timestamp).appendTo($newPost);
-
+        var post = createPost(resource);
+        post.appendTo(wrapper);
     });
+    $(wrapper).prependTo("#TheWall");
+    $(wrapper).fadeIn(1000);
 }
 
 // This loads new posts and sends data to printPosts

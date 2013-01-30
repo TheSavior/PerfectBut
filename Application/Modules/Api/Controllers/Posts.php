@@ -35,7 +35,14 @@ class Posts extends \Saros\Application\Controller
         $items = array();
         $posts = $this->mapper->all('\Application\Entities\Posts')->order(array("date_created"=>"desc"))->limit();
         foreach($posts as $post) {
-            $items[] = array("text"=> $post->text, "username" => $post->poster->username, "upvotes" => $post->upvote, "downvotes" => $post->downvote, "timestamp" => $post->date_created);
+            $items[] = array("id" => $post->id, 
+                            "text"=> $post->text, 
+                            "username" => $post->poster->username, 
+                            "upvotes" => $post->upvote, 
+                            "downvotes" => $post->downvote, 
+                            "timestamp" => $post->date_created,
+                            "whenstring" => \Application\Classes\Utils::formatDate($post->date_created)
+                            );
         }
 
         echo json_encode($items);
