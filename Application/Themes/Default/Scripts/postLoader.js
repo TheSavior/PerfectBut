@@ -1,3 +1,7 @@
+<?php
+header("Content-type: application/x-javascript");
+?>
+
 "use strict";
     
 function createPost(data) {

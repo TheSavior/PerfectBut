@@ -1,4 +1,6 @@
 <?php
+header("Content-type: text/css");
+
 $borderColor = "#A33360";
 $pink = "rgb(242, 0, 83)";
 ?>
