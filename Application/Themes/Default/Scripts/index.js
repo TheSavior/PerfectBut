@@ -16,6 +16,8 @@ var REGISTER = API_USERS + "register";
 var PING = url + "Api/Posts/allAfter/"
 var TAGLINE = "He's the perfect guy but...";
 
+var PING_SECONDS = 10;
+
 $(document).ready(function()    {
     $('.upvote').click(function()   {
         updateVoteCount("up" , $(this))
@@ -25,7 +27,10 @@ $(document).ready(function()    {
         updateVoteCount("down" , $(this))
     });
     $('#querySubmit').click(submitNewPost);
-    //loadPosts();
+    
+    // Keep loading all the new posts
+    setInterval(loadPosts, PING_SECONDS * 1000);
+    
     $('#query').keydown(function(event) {
       if (event.keyCode == 13){
         submitNewPost();
@@ -33,10 +38,10 @@ $(document).ready(function()    {
     });
 });
 
-
 // Prints new posts are the become available from ajax call
 function printPosts (data)  {
-    var firstPost = $(".singlepost")[0]
+    var firstPost = $(".singlepost")[0];
+                     
     var wrapper = document.createElement("div");
     $(wrapper).hide();
     
@@ -50,11 +55,12 @@ function printPosts (data)  {
 }
 
 // This loads new posts and sends data to printPosts
-function loadPosts()    {
+function loadPosts() {
+    var firsttime = $($(".singlepost")[0]).attr("id");
     $.ajax(
         {
             dataType: "json",
-            "url": url + "/Api/Posts/getAll",
+            "url": PING+firsttime,
             success: printPosts
     });                     
 }
