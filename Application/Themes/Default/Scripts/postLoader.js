@@ -5,7 +5,7 @@ header("Content-type: application/x-javascript");
 "use strict";
     
 function createPost(data) {
-    console.log(data);
+    //console.log(data);
     var newpost = $($(".singlepost")[0]).clone();
     
     newpost.attr("id", data.timestamp);

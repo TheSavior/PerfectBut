@@ -43,6 +43,8 @@ function printPosts (data)  {
     var wrapper = document.createElement("div");
     $(wrapper).hide();
     
+    var initialCount = $(".singlepost").length;
+    
     $.each(data, function(i){
         var resource = data[i];
         var post = createPost(resource);
@@ -50,6 +52,17 @@ function printPosts (data)  {
     });
     $(wrapper).prependTo("#TheWall");
     $(wrapper).fadeIn(1000);
+    
+    var afterCount = $(".singlepost").length;
+    
+    // We want to remove as many posts off the end so we have as many as we started with
+    // We need to do it this way because we don't want to only leave a set number
+    // in the case that we add infinite scrolling
+    
+    var toRemove = afterCount - initialCount;
+    if (toRemove > 0) {
+        $(".singlepost").slice(-toRemove).remove();
+    }
 }
 
 // This loads new posts and sends data to printPosts
@@ -91,7 +104,6 @@ function submitNewPost()    {
     var $underpost = $('<div>').addClass('underpost').appendTo($newPost);
     $('<span>').text('Submitted ').appendTo($underpost);
     $('<span>').addClass('time').text('Just Now').appendTo($underpost);
-    $('<span>').addClass('location').text(' in Seattle').appendTo($underpost);
     var $ratings = $('<div>').addClass('ratings').appendTo($posttext);
     var $voteOption = $('<span>').addClass('voteOption upvote').appendTo($ratings);
     $('<span>').text('(0)').appendTo($voteOption);
