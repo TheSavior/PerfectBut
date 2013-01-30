@@ -129,7 +129,7 @@ class Posts extends \Saros\Application\Controller
     
     public function allAfterAction($timestamp) {
         $this->view->show(false);
-                                
+        die();                        
         $items = array();
         $posts = $this->mapper->all('\Application\Entities\Posts', array("date_created >" => $timestamp))->order(array("date_created"=>"desc"));
         foreach($posts as $post) {
