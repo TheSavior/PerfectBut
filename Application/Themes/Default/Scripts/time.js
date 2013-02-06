@@ -25,7 +25,7 @@ function formatDate(timestamp) {
     }
     else if (diff < 60 * 60 * 24 * 30) {
         var result = Math.floor(diff / (60 * 60 * 24));
-        var plrl = plural(result)
+        var plrl = plural(result);
         return result+" day"+plrl+" ago";
     }
     

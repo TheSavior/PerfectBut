@@ -39,7 +39,13 @@ class Install extends \Saros\Application\Controller
         );
         
         foreach($texts as $text) {
-            $post = array("userId" => 1, "text" => $text, "date_created" => time()-rand(0,60), "upvote"=>rand(0,3000), "downvote" => rand(0,1000));
+            $post = array("userId" => 1,
+                            "text" => $text,
+                            "date_created" => time()-rand(0,60), 
+                            "upvote"=>rand(0,3000), 
+                            "downvote" => rand(0,1000),
+                            "ip" => \Application\Classes\Utils::getIp()
+                            );
             $this->registry->mapper->insert('\Application\Entities\Posts', $post);
         }
     }
