@@ -154,6 +154,9 @@ function submitNewPost()    {
     if(textOfPost.length < 10 || textOfPost.length > 160)   {
         //something to tell user they must obey rules of posting
     } else {
+        textOfPost = textOfPost.toLowerCase().replace(/niggers*/g, 'timothy');
+        textOfPost = textOfPost.toLowerCase().replace(/faggots*/g, 'rainbow');
+        $('#query').val('');
         $.post(POST,
             {text : textOfPost} 
         );
