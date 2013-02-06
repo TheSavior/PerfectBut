@@ -108,10 +108,11 @@ function updateVoteCount(voteType , theCounter)  {
 function submitNewPost()    {
     var textOfPost = $('#query').val();
     $('#query').val('');
-    var textOfPost = textOfPost.toLowerCase().replace('nigger', 'timothy');
-    var textOfPost = textOfPost.toLowerCase().replace('niggers', 'people');
-    var textOfPost = textOfPost.toLowerCase().replace('faggot', 'rainbow');
-    var textOfPost = textOfPost.toLowerCase().replace('faggots', 'rainbows');
+
+    // TODO: Change to loop over filter file
+    textOfPost = textOfPost.toLowerCase().replace(/niggers*/g, 'timothy');
+    textOfPost = textOfPost.toLowerCase().replace(/faggots*/g, 'rainbow');
+
     var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
     $newPost.hide();
     var $posttext = $('<div>').addClass('posttext').appendTo($newPost);
