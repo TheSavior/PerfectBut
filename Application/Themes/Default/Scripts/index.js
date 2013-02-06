@@ -5,14 +5,15 @@ header("Content-type: application/x-javascript");
 "use strict";
 
 var url = "<?php echo $_SERVER["ROOT"]?>";                                              
-var API_USERS = url + "Api/Users/"
+var API_USERS = url + "Api/Users/";
 var login = API_USERS + "login";
 var userAuth = API_USERS + "currentUser";
 var POST = url + "Api/Posts/post/";
 var VOTE = url + "Api/Posts/vote/";
 var REGISTER = API_USERS + "register";
-var PING = url + "Api/Posts/allAfter/"
+var PING = url + "Api/Posts/allAfter/";
 var TAGLINE = "He's the perfect guy but...";
+var SCROLL =  url + "Api/Posts/before/";
 
 var PING_SECONDS = 10;
 var TIME_SECONDS = 20;
@@ -34,10 +35,45 @@ $(document).ready(function()    {
     
     $('#query').keydown(function(event) {
       if (event.keyCode == 13){
-        submitNewPost();
+        getScrollPosts();
       }
     });
+
+    // If scrollbar is 100 pixels from the bottom
+    $(document).scroll(function(){
+        if (document.height - (window.pageYOffset + window.innerHeight) < 100) {
+            scrollPosts();
+        } 
+    });
+
 });
+
+// Loads 20 posts to append to bottom
+function loadScrollPosts(data)  {
+    var wrapper = document.createElement("div");
+    $(wrapper).hide();
+    $.each(data, function(i){
+        var resource = data[i];
+        var post = createPost(resource);
+        post.appendTo(wrapper);
+    });
+    $(wrapper).appendTo("#TheWall");
+    $(wrapper).fadeIn(1000);
+}
+
+// Calls for next 20 posts to add to bottom for the scroll
+function scrollPosts()  {
+    var oldestTimestamp = $('.singlepost').last().attr('id'); 
+    alert(oldestTimestamp);  
+    $.ajax(
+        {
+            dataType: "json",
+            "url": SCROLL + oldestTimestamp ,
+            success: loadScrollPosts
+    });                    
+}
+
+
 
 // Prints new posts are the become available from ajax call
 function printPosts (data)  {
