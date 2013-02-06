@@ -88,17 +88,28 @@ class Posts extends \Saros\Application\Controller
             echo "Post is of an invalid length";
             \Application\Classes\ErrorCode::show(400);
         }
-            
+        
         //$location = $this->getCity();
               
         $post = $this->registry->mapper->get('\Application\Entities\Posts');
         
         $postText = preg_replace('/[^(\x20-\x7F)]*/','', $postText);
         $post->text = htmlspecialchars($postText);
+        
+        // It's a valid form for a post
+        // Lets check it against recent posts
+        $recentPosts = $GLOBALS["registry"]->mapper->all('\Application\Entities\Posts')->order(array("date_created"=>"desc"))->limit(30);
+        foreach($recentPosts as $recentPost) {
+            if (levenshtein($recentPost->text, $post->text) <= 4) {
+                echo "Duplicate posts not allowed";
+                \Application\Classes\ErrorCode::show(400);
+            }
+        }
 
         //$auth = \Saros\Auth::getInstance();
         //$post->userId = $auth->getIdentity()->getIdentifier();
         $post->date_created = time();
+        $post->ip = \Application\Classes\Utils::getIp();
         
         /*if ($location)
         {
@@ -135,7 +146,7 @@ class Posts extends \Saros\Application\Controller
         $this->view->show(false);
            
         $items = array();
-        $posts = $this->mapper->all('\Application\Entities\Posts', array("date_created >" => $timestamp))->order(array("date_created"=>"desc"))->limit(100);
+        $posts = $this->mapper->all('\Application\Entities\Posts', array("date_created >" => $timestamp))->order(array("date_created"=>"desc"))->limit();
         foreach($posts as $post) {
             $items[] = $this->postToArray($post);
         }
