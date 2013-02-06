@@ -31,4 +31,14 @@ class Stats extends \Saros\Application\Controller
             echo $post->text."\n";
         }
     }
+    
+    public function removeDuplicatesAction() {
+        if (\Application\Classes\Utils::isProduction()){
+            die("Not accessible on a production install");
+        }
+        
+        $this->view->show(false);
+        $query = $GLOBALS["registry"]->mapper->connection()->query("DELETE p1 FROM posts p1, posts p2 WHERE p1.id > p2.id AND p1.id<>p2.id AND p1.text = p2.text");
+        echo $query->rowCount();
+    }
 }

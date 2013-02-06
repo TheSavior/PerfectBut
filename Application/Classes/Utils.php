@@ -3,6 +3,10 @@
 
     class Utils
     {   
+        public static function isProduction() {
+            return (isset($_SERVER["PRODUCTION"]) && strtolower($_SERVER["PRODUCTION"]) == "true");
+        }
+        
         /**
         * Get a user 
         * 

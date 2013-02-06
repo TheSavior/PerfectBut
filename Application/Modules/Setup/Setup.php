@@ -32,6 +32,10 @@ class Setup
      */
     public function doSetup($registry)
     {
+        if (\Application\Classes\Utils::isProduction()){
+            die("Not accessible on a production install");
+        }
+        
         $cfg = new \Spot\Config();
         
         $cfg->addConnection('mysql', $registry->config->db);
