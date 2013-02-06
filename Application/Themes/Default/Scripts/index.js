@@ -27,7 +27,9 @@ $(document).ready(function()    {
     $('.downvote').click(function() {
         updateVoteCount("down" , $(this))
     });
-    $('#querySubmit').click(submitNewPost);
+    $('#querySubmit').click(function()  {
+        submitNewPost();
+    });
     
     // Keep loading all the new posts
     setInterval(loadPosts, PING_SECONDS * 1000);
@@ -36,7 +38,7 @@ $(document).ready(function()    {
     
     $('#query').keydown(function(event) {
       if (event.keyCode == 13){
-        getScrollPosts();
+        submitNewPost();
       }
     });
 
@@ -157,6 +159,7 @@ function submitNewPost()    {
         textOfPost = textOfPost.toLowerCase().replace(/niggers*/g, 'timothy');
         textOfPost = textOfPost.toLowerCase().replace(/faggots*/g, 'rainbow');
         $('#query').val('');
+        $('#querySubmit').effect("highlight", {}, 350);
         $.post(POST,
             {text : textOfPost} 
         );
