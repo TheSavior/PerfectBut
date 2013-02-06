@@ -46,7 +46,6 @@ $(document).ready(function()    {
            if(HAS_OLD_POSTS)    {
                 scrollPosts();
             }else{
-                alert('no more posts');
                 $(document).unbind('scroll');
             }
         } 
