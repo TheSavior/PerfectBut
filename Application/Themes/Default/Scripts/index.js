@@ -151,33 +151,11 @@ function updateVoteCount(voteType , theCounter)  {
 // Prints new post if user is logged in depends on signInAjax
 function submitNewPost()    {
     var textOfPost = $('#query').val();
-    $('#query').val('');
-
-    // TODO: Change to loop over filter file
-    textOfPost = textOfPost.toLowerCase().replace(/niggers*/g, 'timothy');
-    textOfPost = textOfPost.toLowerCase().replace(/faggots*/g, 'rainbow');
-
-    var $newPost = $('<div>').addClass('singlepost').prependTo('#TheWall');
-    $newPost.hide();
-    var $posttext = $('<div>').addClass('posttext').appendTo($newPost);
-    $('<span>').addClass('intro').text('He\'s the perfect guy but...').appendTo($posttext);
-    $('<br>').appendTo($posttext);
-    $('<span>').addClass('text').text(textOfPost).appendTo($posttext);
-    var $underpost = $('<div>').addClass('underpost').appendTo($newPost);
-    $('<span>').text('Submitted ').appendTo($underpost);
-    $('<span>').addClass('time').text('Just Now').appendTo($underpost);
-    var $ratings = $('<div>').addClass('ratings').appendTo($posttext);
-    var $voteOption = $('<span>').addClass('voteOption upvote').appendTo($ratings);
-    $('<span>').text('(0)').appendTo($voteOption);
-    $('<img>').attr('src' , 'http://tranquil-wave-1815.herokuapp.com/Application/Themes/Default/Images/ring_big.png').appendTo($voteOption);
-    $('<span>').text('Take Him').appendTo($voteOption);
-    var $voteOption2 = $('<span>').addClass('voteOption downvote').appendTo($ratings);
-    $('<span>').text('(0)').appendTo($voteOption2);
-    $('<img>').attr('src' , 'http://tranquil-wave-1815.herokuapp.com/Application/Themes/Default/Images/run_big.png').appendTo($voteOption2);
-    $('<span>').text('Leave Him').appendTo($voteOption2);
-    $newPost.fadeIn(500);
-
-    $.post(POST,
-        {text : textOfPost} 
-    );
+    if(textOfPost.length < 10 || textOfPost.length > 160)   {
+        //something to tell user they must obey rules of posting
+    } else {
+        $.post(POST,
+            {text : textOfPost} 
+        );
+    }
 }
