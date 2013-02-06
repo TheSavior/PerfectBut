@@ -17,6 +17,7 @@ var SCROLL =  url + "Api/Posts/before/";
 
 var PING_SECONDS = 10;
 var TIME_SECONDS = 20;
+var HAS_OLD_POSTS = true;
 
 $(document).ready(function()    {
     $('.upvote').click(function()   {
@@ -42,7 +43,12 @@ $(document).ready(function()    {
     // If scrollbar is 100 pixels from the bottom
     $(document).scroll(function(){
         if (document.height - (window.pageYOffset + window.innerHeight) < 100) {
-            scrollPosts();
+           if(HAS_OLD_POSTS)    {
+                scrollPosts();
+            }else{
+                alert('no more posts');
+                $(document).unbind('scroll');
+            }
         } 
     });
 
@@ -50,6 +56,9 @@ $(document).ready(function()    {
 
 // Loads 20 posts to append to bottom
 function loadScrollPosts(data)  {
+    if (data.length === 0)  {
+        HAS_OLD_POSTS = false;
+    }
     var wrapper = document.createElement("div");
     $(wrapper).hide();
     $.each(data, function(i){
