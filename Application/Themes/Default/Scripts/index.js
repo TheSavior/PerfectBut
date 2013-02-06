@@ -55,18 +55,19 @@ $(document).ready(function()    {
 
 // Loads 20 posts to append to bottom
 function loadScrollPosts(data)  {
-    if (data.length === 0)  {
+    if (data.length === 0)  { // No more posts
         HAS_OLD_POSTS = false;
+    }else{
+        var wrapper = document.createElement("div");
+        $(wrapper).hide();
+        $.each(data, function(i){
+            var resource = data[i];
+            var post = createPost(resource);
+            post.appendTo(wrapper);
+        });
+        $(wrapper).appendTo("#TheWall");
+        $(wrapper).fadeIn(1000);
     }
-    var wrapper = document.createElement("div");
-    $(wrapper).hide();
-    $.each(data, function(i){
-        var resource = data[i];
-        var post = createPost(resource);
-        post.appendTo(wrapper);
-    });
-    $(wrapper).appendTo("#TheWall");
-    $(wrapper).fadeIn(1000);
 }
 
 // Calls for next 20 posts to add to bottom for the scroll
