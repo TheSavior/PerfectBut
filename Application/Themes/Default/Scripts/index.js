@@ -63,8 +63,7 @@ function loadScrollPosts(data)  {
 
 // Calls for next 20 posts to add to bottom for the scroll
 function scrollPosts()  {
-    var oldestTimestamp = $('.singlepost').last().attr('id'); 
-    alert(oldestTimestamp);  
+    var oldestTimestamp = $('.singlepost').last().attr('id');  
     $.ajax(
         {
             dataType: "json",
