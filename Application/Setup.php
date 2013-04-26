@@ -44,7 +44,6 @@ class Setup
         // Check if we should use production database or not
         if (isset($_SERVER["CLEARDB_DATABASE_URL"]))
         {
-            //$cfg->addConnection('mysql', 'mysql://meet:w3haveToMeet@mysql1094.servage.net/meet');
             $registry->config->db = $_SERVER["CLEARDB_DATABASE_URL"];
         }
         else
